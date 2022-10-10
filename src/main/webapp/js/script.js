@@ -255,7 +255,7 @@ function getAssessmentQuestionAndAnswer(currentLessonNumber, programId)
             else if(programId == "program1"){
     			question = 'Write query about protrons of  hydrogen ?';
                 answer = "% The proton number of hydrogen is 1 protonsOf(H,1)";   
-    		}
+            }
     		else if(programId == "program2"){
     			question = 'write the relation between proton and atomic number of the hydrogen of element H?';
                 answer = "% N is the atomic number of the element E if N  is the number of protons of element E protonsOf(E, N) :- atomicNumber(E, N)";
