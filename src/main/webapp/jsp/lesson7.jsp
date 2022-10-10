@@ -467,6 +467,7 @@ $(function(){
 	</section>
 	<!-- onlineSPARC -->
 	<!-- skipped 25,26 pages -->
+	#learning outcome 4
 	 <section id=" version-1-course-x-lesson-7-page-27" class="container" hidden>
         <div class="row">
             <div class="col-md-6 content" style="margin-left:20rem">
