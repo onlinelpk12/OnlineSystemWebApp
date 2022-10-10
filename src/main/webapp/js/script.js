@@ -223,6 +223,52 @@ function getAssessmentQuestionAndAnswer(currentLessonNumber, programId)
             question = "Extend your model for Phosphorus";
             answer = "% The chemical symbol for Phosphorus is P symbolFor(Phosphorus, P)";
         }
+        else if(currentLessonNumber == 6){
+    		let elementSelectedFlag = sessionStorage.getItem("elementSelected");
+        	let elementName = sessionStorage.getItem("elementName");
+        	let symbolSelected = sessionStorage.getItem("elementSymbol");
+    		if(programId == "program0"){
+                question = 'What is the proton and atomic number of carbon ?';
+                answer = "% The atomic number of carbon is 6 atomicNumber(carbon, 6)";   
+            }
+            else if(programId == "program1"){
+    			question = 'What is the proton and atomic number of hydrogen ?';
+                answer = "% The atomic number of hydrogen is 1 atomicNumber(hydrogen, 1)";   
+    		}
+    		else if(programId == "program2"){
+    			question = 'What is the proton and atomic number of oxygen ?';
+                answer = "% The atomic number of oxygen is 8 atomicNumber(oxygen, 8)";
+    		}
+    		else if(programId == "program3" && elementSelectedFlag){			
+        		question = "Extend your model for any element";
+                answer = "% The atomic number of "+elementName+" is "+symbolSelected+" atomicNumber("+elementName+", "+symbolSelected+")";
+    		}
+    	}
+        else if(currentLessonNumber == 7){
+    		let elementSelectedFlag = sessionStorage.getItem("elementSelected");
+        	let elementName = sessionStorage.getItem("elementName");
+        	let symbolSelected = sessionStorage.getItem("elementSymbol");
+    		if(programId == "program0"){
+                question = 'write the relation rule protron and atomic number of hydrogen?';
+                answer = "% protonsOf(E, N) :- atomicNumber(E, N).";   
+            }
+            else if(programId == "program1"){
+    			question = 'Write query about protrons of  hydrogen ?';
+                answer = "% The proton number of hydrogen is 1 protonsOf(H,1)";   
+    		}
+    		else if(programId == "program2"){
+    			question = 'write the relation between proton and atomic number of the hydrogen of element H?';
+                answer = "% N is the atomic number of the element E if N  is the number of protons of element E protonsOf(E, N) :- atomicNumber(E, N)";
+    		}
+    		else if(programId == "program3"){
+    			question = 'write the relation between atomic and protron number of the hydrogen of element H?';
+                answer = "% N is the atomic number of the element. if N  is the number of protons of element E. atomicNumber(E, N) :- protonsOf(E, N).";
+    		}
+    		else if(programId == "program4" && elementSelectedFlag){			
+        		question = "write the relation between atomic and proton number of the element";
+                answer = "% The number of protons of the atom of an element E is N, if N  is the atomic number of the element E.protonsOf(E, N) :- atomicNumber(E, N).  N is the atomic number of the element E if N  is the number of protons of element E.atomicNumber(E, N) :- protonsOf(E, N).";
+    		}
+    	}
     }
    return {"question" : question, "answer" : answer}; 
 }
