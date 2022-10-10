@@ -250,7 +250,7 @@ function getAssessmentQuestionAndAnswer(currentLessonNumber, programId)
         	let symbolSelected = sessionStorage.getItem("elementSymbol");
     		if(programId == "program0"){
                 question = 'write the relation rule protron and atomic number of hydrogen?';
-                answer = "% protonsOf(E, N) :- atomicNumber(E, N).";   
+                answer = "% protonsOf(H, 1) :- atomicNumber(H, 1).";   
             }
             else if(programId == "program1"){
     			question = 'Write query about protrons of  hydrogen ?';
