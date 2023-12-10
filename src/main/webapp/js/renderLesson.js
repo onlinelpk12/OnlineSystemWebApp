@@ -146,7 +146,7 @@
 
             pdfDoc.getPage(pageNumber).then(function (page) {
                 var canvas = document.createElement('canvas');
-                var viewport = page.getViewport({ scale: 1 });
+                var viewport = page.getViewport({ scale: 1.5 });
 
                 canvas.height = viewport.height;
                 canvas.width = viewport.width;
