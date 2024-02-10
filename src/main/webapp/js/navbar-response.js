@@ -1,4 +1,3 @@
-import {"http://129.118.152.81:5000"} from "../static/global.js"
 //let ajaxurl = 'ajax.php';
 
 /* Fluents for navigation of file system 
