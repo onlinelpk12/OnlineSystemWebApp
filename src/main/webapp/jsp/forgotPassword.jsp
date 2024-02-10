@@ -47,7 +47,7 @@
       var newPassword=document.getElementById('newPassword').value;
       //fetch post request
       //const corsProxy = "https://onlinelpk12-corsproxy.herokuapp.com/";
-      const forgotPasswordAPI = dotnet_endpoint+"api/User/ForgotPassword";
+      const forgotPasswordAPI = "http://129.118.152.81:5000"+"api/User/ForgotPassword";
       fetch(forgotPasswordAPI,{
         method:'POST',
         body: JSON.stringify({

@@ -46,7 +46,7 @@ let studentid=sessionStorage.getItem("studentid");
 let lessonid=sessionStorage.getItem("lessonID");
 let lessonoutcome=sessionStorage.getItem("lessonOutcome");
 const corsProxy = "https://onlinelpk12-corsproxy.herokuapp.com/";
-const teacher_url = dotnet_endpoint+"api/Teacher/"+studentid+"/assessment/lessson/"+lessonid+"/learningoutcome/"+lessonoutcome;
+const teacher_url = "http://129.118.152.81:5000"+"api/Teacher/"+studentid+"/assessment/lessson/"+lessonid+"/learningoutcome/"+lessonoutcome;
 
 
 $.ajaxSetup({

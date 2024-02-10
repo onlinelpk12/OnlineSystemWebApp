@@ -1,4 +1,4 @@
-import {dotnet_endpoint} from "../static/global.js"
+import {"http://129.118.152.81:5000"} from "../static/global.js"
 //let ajaxurl = 'ajax.php';
 
 /* Fluents for navigation of file system 
@@ -21,7 +21,7 @@ const corsProxy = "https://onlinelpk12-corsproxy.herokuapp.com/";
 */
 var refreshDirectory = function() {
 	let userid = getUserId();
-	const getAllFilesForldersAPI = dotnet_endpoint+"api/SparcFileSystem/getallfoldersfiles";
+	const getAllFilesForldersAPI = "http://129.118.152.81:5000"+"api/SparcFileSystem/getallfoldersfiles";
     //var data = {'action': "getAccessibleDirectory"};
 	//US-13
 	$.ajax({
@@ -160,8 +160,8 @@ var deleteFileOrFolder = function(name) {
 				   		'parentUrl': ApiParentURIParam
     			    	};
     		
-    		//const folderDeletionAPI = dotnet_endpoint+"api/SparcFileSystem/deletefolder"+decodeURIComponent($.param(data,encodeData=false));
-    		const folderDeletionAPI = dotnet_endpoint+"api/SparcFileSystem/deletefolder";
+    		//const folderDeletionAPI = "http://129.118.152.81:5000"+"api/SparcFileSystem/deletefolder"+decodeURIComponent($.param(data,encodeData=false));
+    		const folderDeletionAPI = "http://129.118.152.81:5000"+"api/SparcFileSystem/deletefolder";
     		
     		postSparcData(folderDeletionAPI, data).then(resp =>{
     			console.log('response from post method: ', resp);
@@ -187,7 +187,7 @@ var deleteFileOrFolder = function(name) {
 			   		'folderUrl': ApiFolderNameParam
 			    	};
         	
-        	const fileDeletionAPI = dotnet_endpoint+"api/SparcFileSystem/deletefile?"+decodeURIComponent($.param(data,encodeData=false));
+        	const fileDeletionAPI = "http://129.118.152.81:5000"+"api/SparcFileSystem/deletefile?"+decodeURIComponent($.param(data,encodeData=false));
         	postSparcData(fileDeletionAPI, data).then(resp =>{
     			console.log('response from post method: ', resp);
     			if (resp.errors.length==0) {
@@ -343,7 +343,7 @@ var setEditorToFile = function(fileName) {
                  'folderUrl':folderurl,
                };   
     
-    const getFileAPI = dotnet_endpoint+"api/SparcFileSystem/getfile?"+($.param(data,encodeData=false));
+    const getFileAPI = "http://129.118.152.81:5000"+"api/SparcFileSystem/getfile?"+($.param(data,encodeData=false));
     $.ajaxSetup({
         headers:{
            'Authorization': "Bearer "+ sessionStorage.getItem("token")
@@ -553,7 +553,7 @@ $(document).ready(function() {
             	'folderName': folderName,
             	'parentUrl': parentURL
             	};
-        const folderCreationAPI = dotnet_endpoint+"api/SparcFileSystem/createfolder";
+        const folderCreationAPI = "http://129.118.152.81:5000"+"api/SparcFileSystem/createfolder";
         
         postSparcData(folderCreationAPI, data).then(resp =>{
 			console.log('response from post method: ', resp);
@@ -587,7 +587,7 @@ $(document).ready(function() {
                 'folderUrl': folderUrl
                };
 
-        const fileCreationAPI = dotnet_endpoint+"api/SparcFileSystem/createfile";
+        const fileCreationAPI = "http://129.118.152.81:5000"+"api/SparcFileSystem/createfile";
         // Expected response : success message
         postSparcData(fileCreationAPI, data).then(resp =>{
 			console.log('response from post method: ', resp);
@@ -737,7 +737,7 @@ $(document).ready(function() {
                };
         
         console.log("data : ",data);
-        const saveFileAPI = dotnet_endpoint+"api/SparcFileSystem/savefile";
+        const saveFileAPI = "http://129.118.152.81:5000"+"api/SparcFileSystem/savefile";
         postSparcData(saveFileAPI, data).then(resp =>{
 			console.log('response from post method: ', resp);
 			if (resp.errors.length==0) {

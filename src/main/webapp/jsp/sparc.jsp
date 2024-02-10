@@ -317,7 +317,7 @@ window.addEventListener('popstate', function (event) {
 	    document.getElementById("question").innerHTML = titleQuestion.question;
 	}
 	let userid = sessionStorage.getItem("userId");
-	const apiBaseurl = dotnet_endpoint+"api/sparc/";
+	const apiBaseurl = "http://129.118.152.81:5000"+"api/sparc/";
 	//var input="getAnswerSets";
     var editor = ace.edit("editor");
     editor.session.setMode("ace/mode/sparc");

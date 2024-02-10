@@ -40,7 +40,7 @@ window.onload = function() {
 function getApiData()
 {
 	let studentid = sessionStorage.getItem("studentid");
-	const teacher_url = dotnet_endpoint+"api/Teacher/"+studentid+"/sparc/";
+	const teacher_url = "http://129.118.152.81:5000"+"api/Teacher/"+studentid+"/sparc/";
 
 
 $.ajaxSetup({

@@ -43,7 +43,7 @@ function getApiData()
 //let user_id="14";
 let studentid=sessionStorage.getItem("studentid");
 const corsProxy = "https://onlinelpk12-corsproxy.herokuapp.com/";
-const teacher_url = dotnet_endpoint+"api/Teacher/"+studentid+"/lessonprogress";
+const teacher_url = "http://129.118.152.81:5000"+"api/Teacher/"+studentid+"/lessonprogress";
 
 
 var response = null;

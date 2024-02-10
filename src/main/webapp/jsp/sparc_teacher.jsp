@@ -141,7 +141,7 @@ var lessonid=sessionStorage.getItem("lessonID");
 var lessonoutcome=sessionStorage.getItem("lessonOutcome");
 var userRole = sessionStorage.getItem('userRole');
 //const corsProxy = "https://onlinelpk12-corsproxy.herokuapp.com/";
-const apiBaseurl = dotnet_endpoint+"api/sparc/";
+const apiBaseurl = "http://129.118.152.81:5000"+"api/sparc/";
 
 var editor = ace.edit("editor");
 editor.session.setMode("ace/mode/sparc");
@@ -178,7 +178,7 @@ function getApiData()
 {
 	let lessonid=sessionStorage.getItem("lessonID");
 	let lessonoutcome=sessionStorage.getItem("lessonOutcome");
-	const teacher_url = dotnet_endpoint+"api/Teacher/"+studentid+"/sparc/lessson/"+lessonid+"/learningoutcome/"+lessonoutcome;
+	const teacher_url = "http://129.118.152.81:5000"+"api/Teacher/"+studentid+"/sparc/lessson/"+lessonid+"/learningoutcome/"+lessonoutcome;
 	$.ajaxSetup({
    headers:{
       'Authorization': "Bearer "+ sessionStorage.getItem("token")
