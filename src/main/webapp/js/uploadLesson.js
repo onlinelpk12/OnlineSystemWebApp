@@ -44,7 +44,7 @@ const pdffile = document.querySelector('#pdfFile');
 		    try {
 		      const result = await toBase64(selectedFile);
 		      console.log(result)
-		      fetch("https://localhost:7155/api/Lesson/uploadLesson", {
+		      fetch(dotnet_endpoint+"api/Lesson/uploadLesson", {
                 method: 'POST',
                 body: JSON.stringify({
 		            "courseName":fileName[0],
@@ -117,7 +117,7 @@ const pdffile = document.querySelector('#pdfFile');
                         "answers":answers
                     });
                    
-                const uploadAssessmentAPI = "https://localhost:7155/api/Lesson/uploadAssessmentDetails";
+                const uploadAssessmentAPI = dotnet_endpoint+"api/Lesson/uploadAssessmentDetails";
                 fetch(uploadAssessmentAPI,{
                   method:'POST',
                   body: data,

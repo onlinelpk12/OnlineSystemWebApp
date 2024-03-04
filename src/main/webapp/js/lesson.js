@@ -1,6 +1,6 @@
 window.onload = function () {
 	
-    const getLessonsListAPI ="https://localhost:7155/api/Lesson/getLessonList?course=Onlinelpk12";
+    const getLessonsListAPI = dotnet_endpoint+"api/Lesson/getLessonList?course=Onlinelpk12";
     const cn = "Onlinelpk12";
     fetch(getLessonsListAPI, {
         method: 'GET',

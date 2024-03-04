@@ -7,7 +7,7 @@
         	const queryString = window.location.search;
         	const urlParams = new URLSearchParams(queryString);
         	const lesson = urlParams.get('lesson');
-            const getLessonAPI = "https://localhost:7155/api/Lesson/getLesson";
+            const getLessonAPI = dotnet_endpoint+"api/Lesson/getLesson";
             const cn = "Onlinelpk12";
          
             
@@ -44,7 +44,7 @@
         function fetchAssessment(data,lesson,cn)
         {
             
-            const getAssessmentAPI = "https://localhost:7155/api/Lesson/fetchAssessmentDetails";
+            const getAssessmentAPI = dotnet_endpoint+"api/Lesson/fetchAssessmentDetails";
             fetch(getAssessmentAPI, {
                 method: 'POST',
                 body: JSON.stringify({

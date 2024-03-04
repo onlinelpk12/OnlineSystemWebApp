@@ -8,7 +8,7 @@ function disableElement(id) {
     }
 }
 
-const apiBaseUrl = "https://localhost:7155/api";
+const apiBaseUrl = dotnet_endpoint+"api";
 const lessonsUrl = "/onlineSystem/lessonnumber.jsp"
 
 let userIdFromSession = 0;
