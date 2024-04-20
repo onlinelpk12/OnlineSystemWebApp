@@ -9,57 +9,119 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script type="text/javascript" src="../static/global.js"></script>
     <!-- Custom CSS link -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../styles/style.css"> 
     <style>
-		.disabled-link{ 
-			pointer-events: none;
-			cursor: not-allowed;
-		}
-			 .scrollableDiv{
-	 		height: 600px;
-	 		overflow-y:auto;
-	 		overflow-x:hidden;
-	 		padding-top: 10px;
-	 		padding-bottom: 10px;
-	 }
+		 .form-container {
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .img-container {
+            text-align: center;
+        }
+
+        .img-container img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+        }
+
+        .scrollableDiv {
+            height: 600px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        #error-message {
+            color: red;
+            display: none;
+        }
+
+        /* Adjust input box sizes */
+        .form-floating input[type="text"],
+        .form-floating input[type="password"] {
+            width: calc(100% - 32px); /* Adjusted width */
+        }
+        .centered-text {
+            text-align: center;
+            margin-left: 32px;
+        }
+        .centered-container {
+            display: flex;
+            justify-content: center;
+            align-items: center; /* This ensures the container takes the full height of the viewport */
+        }
 	</style>
 </head>
 <body>
     <section class="wrapper">
-        <div class="row container">
-            <div class="col-4" style="margin-top: 10rem;">
+        <div class="row justify-content-center">
+            <div class="col-4 img-container" style="margin-top: 10rem;">
                 <img src="../images/education.png" class="img-fluid"/>
             </div>
-            <div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center ms-auto scrollableDiv" style="margin-top: 5rem;">
-                <form class="rounded bg-white shadow p-5" id="form">
-                    <h3 class="text-dark fw-bolder fs-4 mb-2">Online LPK12</h3>
-                    <div class="fw-normal text-muted mb-4">
-                        New to Online LPK12? <a href="Register.html" class="text-primary fw-bold text-decoration-none">Create an Account</a>
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 form-container scrollableDiv" style="margin-top: 5rem;">
+                  <form class="rounded bg-white shadow p-8" id="form">
+                     <h3 class="text-dark fw-bolder fs-4 mb-2 centered-text">Online LPK12</h3>
+                     <div class="fw-normal text-muted mb-4 centered-text">
+                        New to Online LPK12? <a href="register.html"class="text-primary fw-bold text-decoration-none">Create an Account</a>
+                     </div>
+		     		<div style=" margin-right:64px; margin-bottom:16px">
+	                    <select name="Role" id="role" style="width:100%; margin-left: 32px;
+    margin-bottom: 4px;
+    margin-right: 64px; border-radius:8px; padding:8px;">
+						  <option value="Select role">Select role</option>
+						  <option value="Course developer">Course developer</option>
+						  <option value="Teacher">Teacher</option>
+						  <option value="Student">Student</option>
+						</select>
                     </div>
-                    <div class="form-floating mb-3">
+                     <div class="form-floating mb-3 centered-text">
                         <input type="text" id="username" class="form-control" placeholder="UserName">
                         <label for="username">User Name</label>
                       </div>
-                      <div class="form-floating">
+                      <div class="form-floating centered-text">
                         <input type="password" class="form-control" id="password" placeholder="Password">
                         <label for="password">Password</label>
                       </div>
+                      <div id="error-message"  style="display: none;"></div>
+                         <div style="padding-left:32px; padding-top:8px;">
+                            <label for="showPasswordCheckbox">Show Password</label>
+                            <input type="checkbox" id="showPasswordCheckbox" onclick="togglePasswordVisibility()"></div>      
+                         
                       <div class="mt-2 text-end">
                         <a href="forgotPassword.jsp" class="text-primary fw-bold text-decoration-none">Forgot Password?</a>
                       </div>
-                      <button type="submit" class="btn btn-primary submit_btn w-100 my-4">Login</button>
+                      <div class="centered-container "><button type="submit" class="btn btn-primary submit_btn w-50 my-4 centered-text" >Login</button></div>
 
-                      <div class="text-center text-muted text-uppercase mb-3">Or</div>
+                      <!-- <div class="text-center text-muted text-uppercase mb-3">Or</div>
 
                       <a href="#" class="btn btn-light login_with w-100 mb-3 disabled-link" id="loginViaGoogle">
                         <img src="../images/google-icon.svg" class="img-fluid me-3" style="height: 18px; width: 18px;">Continue with Google</a>
 
                         <a href="#" class="btn btn-light login_with w-100 mb-3 disabled-link"  id="loginViaLinkedIn">
-                            <img src="../images/linkedin-icon.svg" class="img-fluid me-3" style="height: 18px; width: 18px;">Continue with LinkedIn</a>
-                </form>
-            </div>
-        </div>
+            
+                          <img src="../images/linkedin-icon.svg" class="img-fluid me-3" style="height: 18px; width: 18px;">Continue with LinkedIn</a> -->
+         </form>
+       </div> 
+       </div>
     </section>
+ <!-- toggle password -->  
+    <script>
+    function togglePasswordVisibility() {
+    	var passwordInput = document.getElementById("password");
+    	var checkbox = document.getElementById("showPasswordCheckbox");
+    	if (checkbox.checked) {
+    	    passwordInput.type = "text";
+    	} else {
+    	    passwordInput.type = "password";
+    	}
+    }	
+</script>
+               
+
 </body>
  <script type="text/javascript">
     var form=document.getElementById('form');
@@ -67,13 +129,16 @@
       e.preventDefault()
       var username=document.getElementById('username').value;
       var password=document.getElementById('password').value;
+      var role=document.getElementById('role').value;
+      var errorMessage = document.getElementById("error-message");
       //fetch post request
       const corsProxy = "https://onlinelpk12-corsproxy.herokuapp.com/";
       const signInAPI = dotnet_endpoint+"api/User/Login";
       fetch(signInAPI,{
         method:'POST',
         body: JSON.stringify({
-            "username":username,
+            "roleType":role,
+            "userName":username,
             "password":password
         }),
         headers:{
@@ -84,9 +149,9 @@
         console.log(resp)
         if(response.status==200){
             resp.then((data)=>{
-                sessionStorage.setItem("username",data.username)
-                sessionStorage.setItem("userId",data.id)
-		sessionStorage.setItem("token",data.accessToken)
+                sessionStorage.setItem("username",data.content.username)
+                sessionStorage.setItem("userId",data.content.id)
+		sessionStorage.setItem("token",data.content.accessToken)
                 console.log(sessionStorage.getItem("userId"))	
               	if(data.content.roles=="Teacher"){
 		  sessionStorage.setItem("userRole","Teacher")
@@ -94,7 +159,17 @@
               	}
               	else if(data.content.roles=='Student'){
 		 sessionStorage.setItem("userRole","Student")
-              	  location.href='home.jsp'
+   		if (data.content.enrolledCourses == "OnlineLPK12"){ 
+   			sessionStorage.setItem("enrolledCourses","OnlineLPK12")
+   		location.href='home_student_onlinelpk12.jsp'
+   		} 
+   		else if (data.content.enrolledCourses == 'LPK12'){
+   		sessionStorage.setItem("enrolledCourses","LPK12")
+   		location.href='home_student_logicds.jsp' 
+   		} 
+   		else {
+   		sessionStorage.setItem("enrolledCourses","home.jsp") 
+   		location.href='home.jsp'}
               	}
             })
         }
@@ -104,11 +179,16 @@
                     alert(data.message)
                 })
             }
-            else if (response.status=401){
+            else if (response.status == 401){
             	resp.then((data)=>{
             		alert(data.message)
             	})
             }
+            else if(response.status == 400) { 
+                errorMessage.innerText = "Invalid Password"; // Set error message
+                errorMessage.style.display = "block"; // Display error message
+            } 
+            
         }
     }).then(function(data){
     });

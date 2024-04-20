@@ -5,12 +5,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-   <script src="../js/verifytoken.js" type="text/javascript"></script>
+  
   <script type="text/javascript">
-    $(function(){
-      verifytoken();
-    });
-    
     function reInitiateFreshPage(){
     	sessionStorage.setItem("pageIdToShow",'');
     }
@@ -30,13 +26,16 @@ a.disabled {
 <div class="row">
 <div class="col-sm-6">
 <h2>Click below links to view the lessons:</h2>
-<ul>
+<ul><p></p>
+<li><a href="../jsp/lesson1.jsp" onclick="reInitiateFreshPage()">Click here to View Lesson 1!</a></li>
 <p></p>
 <li><a href="../jsp/lesson2.jsp" onclick="reInitiateFreshPage()">Click here to View Lesson 2!</a></li>
 <p></p>
 <li><a href="../jsp/lesson3.jsp" onclick="reInitiateFreshPage()">Click here to View Lesson 3!</a></li>
 <p></p>
 <li><a href="../jsp/lesson4.jsp" onclick="reInitiateFreshPage()">Click here to View Lesson 4!</a></li>
+<p></p>
+<li><a href="../jsp/Lesson4.1.jsp" onclick="reInitiateFreshPage()">Click here to View Lesson 4.1!</a></li>
 <p></p>
 <li><a href="../jsp/lesson5.jsp" onclick="reInitiateFreshPage()">Click here to View Lesson 5!</a></li>
 <p></p>
@@ -53,12 +52,6 @@ a.disabled {
 <li><a href="../jsp/lesson12.jsp" onclick="reInitiateFreshPage()">Click here to View Lesson 12!</a></li>
 <p></p>
 <li><a href="../jsp/lesson18.jsp" onclick="reInitiateFreshPage()">Click here to View Lesson 18!</a></li>
-<p></p>
-<li><a href="../jsp/Lesson4.1.jsp" onclick="reInitiateFreshPage()">Click here to View Lesson 4.1!</a></li>
-<p></p>
-<li><a href="../jsp/lesson1.jsp" onclick="reInitiateFreshPage()">Click here to View Lesson 1!</a></li>
-<p></p>
-<li><a href="../jsp/lesson6.1.jsp" onclick="reInitiateFreshPage()">Click here to View Lesson 6.1!</a></li>
 </ul>
 
 <!-- <ul id="lessonList"></ul> -->

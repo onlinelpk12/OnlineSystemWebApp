@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Lesson Editor</title>
+    <style>
+        /* Custom styles */
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 1.25rem!important;
+        }
+        .editor textarea {
+            width: 30vw;
+            height: 80vh; 
+            resize: none;          
+        }
+        .buttons button {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid" style="box-sizing: unset; padding-left: 0%">
+        <div class="header bg-primary text-white p-2">
+        
+         <a href="#" style= "margin-right: 0.5%;" id="goBackButton" onclick="history.back()"><img height="30" width="40" src="../images/back.png"></a>
+      <a id="homepagelink" style= "margin-right: 0.5%;" href="home.jsp"><img height="30" width="40" src="../images/home.png"></a>
+            <i class="fas fa-plus"></i> Lesson Name
+           
+        </div>
+        <div class="row mt-2 ml-2">
+	        <div class="col-sm-3" id='slides' style='height: 90vh; border: 0.25px solid black; padding-top: 20px ; background-color: #f8f9fa;'>
+	            <div class="d-flex justify-content-between">
+		            <button type="button" id='newSlide' class="btn btn-primary">New Slide</button>
+		            <button type="button" id='deleteSlide' class="btn btn-danger">Delete Slide</button>
+	            </div>
+	            <!-- You can use an iframe or any other tag to display compiled content -->
+	        </div>
+	        
+            <div class="col-sm-4">
+                <div class="editor bg-light p-2">
+                <div class="d-flex justify-content-center">
+                    <h2 >Editor</h2>
+                    </div>
+                    <textarea id='editor' rows='10' cols='1000'></textarea>
+                    
+                    <div class="d-flex justify-content-end">
+                    <button type='button' id='compile' class='btn btn-primary'>Compile</button>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+             <div class="editor bg-light p-2">
+             <div class="d-flex justify-content-center">
+                <h2>Preview</h2>
+                </div>
+                <div id='preview' style='border: 1px solid black; height: 80vh; width: 30vw'></div>
+             
+                <!-- You can use an iframe or any other tag to display compiled content -->
+                <!-- I used div just for simplicity -->
+                <!-- The border styling is to visualize where the preview section is -->
+
+                <!-- Save Button -->
+                <!-- You can add a click event listener to this button to trigger saving functionality -->
+                <!-- This is just a placeholder button as per your image -->
+                <!-- The actual implementation will depend on how and where you want to save the data (like local storage, database etc.)-->
+                 <div class="d-flex justify-content-end mt-2">
+                <button type='button' id='save' class='btn btn-success'>Save</button>
+                </div>
+            </div>
+           </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap and other scripts (if needed) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <!-- Add any other scripts you require here -->
+
+    <!-- Your custom JavaScript logic (if needed) -->
+    <script>
+        // Add your JavaScript logic here
+        $(document).ready(function() {
+            $('#compile').click(function() {
+                var htmlContent = $('#editor').val();
+                $('#preview').html(htmlContent);
+            });
+        });
+        // For example, handling button clicks, compiling content, etc.
+    </script>
+</body>
+</html>

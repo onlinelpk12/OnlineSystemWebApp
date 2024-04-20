@@ -8,16 +8,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-	 <script src="../js/verifytoken.js" type="text/javascript">  </script>
 	 <link rel="stylesheet" href="../styles/lesson2.css">
-<script type="text/javascript">
-$(function(){
-    verifytoken();
-});
-</script>
+
     <link rel="stylesheet" href="../styles/style.css">
     <script src="../js/lessonDataStructureJSON.js"></script>
     <script src="../js/script.js"></script>    
+     <script type="text/javascript">
+    function reInitiateFreshPage(){
+            sessionStorage.setItem("pageIdToShow",'version-1-course-x-lesson-2-page-1');
+    }
+    
+  </script>
 </head>
 
 <body>
@@ -45,6 +46,9 @@ $(function(){
             <div class="col-md-8 content" style="margin-left:20rem">
             <h1 style="text-align:center"><b>Modeling Methodology</b></h1> 
             <h1 style="text-align:center">  I: A central CS/AI task and model development </h1> <br>
+            <div class="text-center">
+        		<p>Page 1 of 12</p>
+    		</div>
             <a class="btn btn-primary pull-right"
                 onclick="gotoNext(1, 0, 'version-1-course-x-lesson-1-page-1', false, -1)"> Next </a>
             </div>
@@ -68,11 +72,15 @@ $(function(){
 	                 <li> <b>How to test a model? </b></li>
 	                 <li> <b>How to debug a model?</b></li>
 	            </ul>
+	            
+	            <div class="text-center">
+        				<p>Page 2 of 12</p>
+    			</div>
 	            <a class="btn btn-primary pull-left"
-	                onclick="gotoPrevious(1, 0, 'version-1-course-x-lesson-1-page-2', false, -1)"> Previous
+	                onclick="gotoPrevious(1, 0, 'version-1-course-x-lesson-1-page-2', false, -1)">Previous
 	            </a>
 	            <a class="btn btn-primary pull-right"
-	                onclick="gotoNext(1, 0, 'version-1-course-x-lesson-1-page-2', false, -1)"> Next 
+	                onclick="gotoNext(1, 0, 'version-1-course-x-lesson-1-page-2', false, -1)">Next 
 	            </a>
 	        </div>
 	    </div>
@@ -87,6 +95,9 @@ $(function(){
                 <li> A central task in Computer Science and Artificial Intelligence is to develop a computer model for answering questions.</li>
                 <li> We have developed computer models for a number of questions. Now it is time for us to introduce some vocabularies (concepts) and look at a methodology to complete the central task. </li>
             </ul>
+            <div class="text-center">
+		        <p>Page 3 of 12</p>
+		    </div>
             <a class="btn btn-primary pull-left"
                 onclick="gotoPrevious(1, 0, 'version-1-course-x-lesson-1-page-3', false, -1)"> Previous
             </a>
@@ -124,6 +135,9 @@ father(john, peter).
                 </ul>
                 <li>Note: the sorts/predicates might not be covered by some teachers?</li>
             </ul>
+            <div class="text-center">
+		        <p>Page 4 of 12</p>
+		    </div>
             <a class="btn btn-primary pull-left"
                 onclick="gotoPrevious(1, 0, 'version-1-course-x-lesson-1-page-4', false, -1)"> Previous
             </a>
@@ -169,6 +183,9 @@ father(bob, sarah)
                     <img src="../images/lesson1Image1.png" alt="Slide Content" style="max-width:100%; height:auto; display:block;">
                 </div>
             </div>
+            <div class="text-center">
+		        <p>Page 5 of 12</p>
+		    </div>
             <a class="btn btn-primary pull-left"
                 onclick="gotoPrevious(1, 0, 'version-1-course-x-lesson-1-page-5', false, -1)"> Previous
             </a>
@@ -215,6 +232,9 @@ father(bob, sarah)
                     <img src="../images/lesson1Image1.png" alt="Development of a computer model steps" style="max-width:100%; height:auto; display:block;">
                 </div>
             </div>
+            <div class="text-center">
+		        <p>Page 6 of 12</p>
+		    </div>
             <a class="btn btn-primary pull-left"
                 onclick="gotoPrevious(1, 0, 'version-1-course-x-lesson-1-page-6', false, -1)"> Previous
             </a>
@@ -244,6 +264,9 @@ father(bob, sarah)
                     </ul>
                 </li>
             </ul>
+            <div class="text-center">
+			        <p>Page 7 of 12</p>
+			    </div>
             <a class="btn btn-primary pull-left"
                 onclick="gotoPrevious(1, 0, 'version-1-course-x-lesson-1-page-7', false, -1)"> Previous
             </a>
@@ -281,6 +304,9 @@ father(bob, sarah)
                     </ul>
                 </li>
             </ul>
+            <div class="text-center">
+		        <p>Page 8 of 12</p>
+		    </div>
             <a class="btn btn-primary pull-left"
                 onclick="gotoPrevious(1, 0, 'version-1-course-x-lesson-1-page-8', false, -1)"> Previous
             </a>
@@ -303,6 +329,9 @@ father(bob, sarah)
                     </ul>
                 </li>
             </ul>
+            <div class="text-center">
+		        <p>Page 9 of 12</p>
+		    </div>
             <a class="btn btn-primary pull-left"
                 onclick="gotoPrevious(1, 0, 'version-1-course-x-lesson-1-page-9', false, -1)"> Previous
             </a>
@@ -326,6 +355,9 @@ father(bob, sarah)
                     </ul>
                 </li>
             </ul>
+            <div class="text-center">
+		        <p>Page 10 of 12</p>
+		    </div>
             <a class="btn btn-primary pull-left"
                 onclick="gotoPrevious(1, 0, 'version-1-course-x-lesson-1-page-10', false, -1)"> Previous
             </a>
@@ -355,10 +387,13 @@ father(bob, sarah)
                             </ul>
                         </li>
                         <li>Next, ask students go to online system to complete the MCQ/ google form/quiz.</li>
-                        <li>Click and complete - <a href="YOUR_LINK_HERE">Link</a></li>
+                        <li>Click and complete - <a href="https://forms.gle/QQpTjaNQ8quuZ11g9">Link</a></li>
                     </ul>
                 </li>
             </ul>
+            <div class="text-center">
+		        <p>Page 11 of 12</p>
+		    </div>
             <a class="btn btn-primary pull-left"
                 onclick="gotoPrevious(1, 0, 'version-1-course-x-lesson-1-page-11', false, -1)"> Previous
             </a>
@@ -386,13 +421,16 @@ father(bob, sarah)
                     </ul>
                 </li>
             </ul>
+            <div class="text-center">
+		        <p>Page 12 of 12</p>
+		    </div>
             <a class="btn btn-primary pull-left"
                 onclick="gotoPrevious(1, 0, 'version-1-course-x-lesson-1-page-12', false, -1)"> Previous
             </a>
-            <a class="btn btn-primary pull-right"
-                onclick="gotoNext(2, 0, 'version-1-course-x-lesson-2-page-1', false, -1)"> Next 
-            </a>
-        </div>
+           
+                <a class="btn btn-primary pull-right" href="../jsp/lesson2.jsp" onclick="reInitiateFreshPage()">Next</a>
+                            </div>
+        
     </div>
 </section>
   

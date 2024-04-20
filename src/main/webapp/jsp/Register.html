@@ -9,6 +9,7 @@
 
     <!-- Custom CSS link -->
     <link rel="stylesheet" href="newstyle.css">
+    <script type="text/javascript" src="../static/global.js"></script>
 </head>
 <body>
 <section class="vh-100" style="background-color: #eee;">
@@ -23,7 +24,7 @@
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
                 <form class="mx-1 mx-md-4" id="form" method="post">
-					<div class="d-flex flex-row align-items-center mb-4">
+					<!-- <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
 						<select class="select" id="role" name="role">
@@ -31,7 +32,20 @@
 							<option value="Teacher">Teacher</option>
 						</select>
 					 </div>
-					</div>
+					</div> -->
+					<!-- Course Checkbox -->
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                            <!-- <h6> COURSE </h6> -->
+                            <div>
+                                <input type="checkbox" id="student" name="role" value="student"> Student
+                                <input type="checkbox" id="teacher" name="role" value="teacher"> Teacher
+                            	<input type="checkbox" id="courseDeveloper" name="role" value="courseDeveloper"> Course Developer
+                            </div>
+                            <span id="course-error" class="error-message"></span>
+                        </div>
+                    </div>
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
@@ -114,17 +128,26 @@
 	    	e.preventDefault()
 		 	var firstname=document.getElementById('firstname').value;
 	        var lastname=document.getElementById('lastname').value;
-	       
-			var roles=document.getElementById('role').value;
+	        var roles='';
+			/* var roles=document.getElementById('role').value; */
 	        var username=document.getElementById('username').value;
 	
 	        var email=document.getElementById('email').value;
-	        var courseId=document.getElementById('course').value;
-	        
-	        var pwdObj = document.getElementById('password').value;
-	       	if (roles=='Student'){
-	    	   var isactive=true;
-	       	}
+	        /* var courseId=document.getElementById('course').value; */
+	        if (document.getElementById('student').checked){
+	        	roles+='Student';
+	        }
+	        if (roles=='Student'){
+		    	   var isactive=true;
+		    	   }
+	        if (document.getElementById('teacher').checked){
+	        	roles+=',Teacher';
+	        }
+	        if (document.getElementById('courseDeveloper').checked){
+	        	roles+=',Course Developer';
+	        }
+	        var pwdObj = document.getElementById('password').value;	       	
+	       	
 	       /*--  var hashObj = new jsSHA("SHA-512", "TEXT", {numRounds: 1});
 	        hashObj.update(pwdObj.value);
 	        var hash = hashObj.getHash("HEX");
@@ -148,20 +171,19 @@
 	        console.log(isStudent)--
 	        */
 	
-	        console.log([roles])
-	
+	        console.log([roles]);
 	        //fetch post request
 			 const corsProxy = "https://onlinelpk12-corsproxy.herokuapp.com/";
              const signUpAPI = dotnet_endpoint+"api/User/Register";
 	        fetch(signUpAPI,{
 	            method:'POST',
 	            body: JSON.stringify({
-					"firstname":firstname,
-					"lastname":lastname,
-	                "username":username,
-	                "EmailId":email,
-					"isactive":isactive,
+	            	"userName":username,
+	                "emailId":email,
+					"firstName":firstname,
+					"lastName":lastname,
 	                "password":pwdObj,
+	                "roles":roles
 	            }),
 		        headers:{
 		            "Content-Type":"application/json"
@@ -176,7 +198,7 @@
 	       			 var createRootFolderApi = new URL(createRootFolderAPI);
 	       			 var body = {
 	       					 		userId :userid
-	       					 	} // or:
+	       					 	} 
 	       					 			
 	       			 //createRootFolderApi.search = new URLSearchParams(params).toString();
 					 console.log(createRootFolderApi);
@@ -189,7 +211,7 @@
 	       			 }).then(function(response){
 	       				if(response.status==200){
 	       					console.log(data)
-	       					fetch(dotnet_endpoint+"api/User/"+userid+"/course/"+courseId,{
+	       					fetch(dotnet_endpoint+"api/User/"+userid,{
 	       						method: 'GET',
 	       						headers: {
 	    	       				    'Content-type': 'application/json; charset=UTF-8',
@@ -198,7 +220,7 @@
 	       							{
 	       						if(response.status==200){
 	       							console.log(data)
-	       							location.href="login.jsp"
+	       							location.href="login.html"
 	       						}
 	       							}
 	       							)
@@ -211,7 +233,7 @@
 	                if(response.status==400){
 	                	resp.then((data)=>{
 	                		alert(data.message)
-	                        location.href="register.jsp"
+	                        location.href="register.html"
 	                    })
 	                }
 	            }   

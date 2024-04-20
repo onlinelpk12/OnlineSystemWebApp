@@ -31,7 +31,7 @@
  	    <br>
 	    <br>
             <input type="submit"  value="Change Password" >  <br>
-            <a href="login.jsp">Return to Login</a>  <br>
+            <a href="login.html">Return to Login</a>  <br>
           </form>
           <br>
 	</div>
@@ -45,6 +45,13 @@
       e.preventDefault()
       var userName=document.getElementById('userName').value;
       var newPassword=document.getElementById('newPassword').value;
+    //password validation 
+      var passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
+
+      if (!passwordValidation.test(newPassword)) {
+          alert("Password must contain min of 8 and a max of 15 characters,  one uppercase letter, one lowercase letter, one numeric , and one special character");
+          return; 
+      }
       //fetch post request
       //const corsProxy = "https://onlinelpk12-corsproxy.herokuapp.com/";
       const forgotPasswordAPI = dotnet_endpoint+"api/User/ForgotPassword";
@@ -63,7 +70,7 @@
         console.log(resp)
         if(response.status==200){
             resp.then((data)=>{
-                location.href='login.jsp'
+                location.href='login.html'
               	
             })
         }
@@ -76,7 +83,7 @@
             }
             else if (response.status=401){
             	resp.then((data)=>{
-            		alert(data.message)
+            		alert(data.errors)
             		location.href='forgotPassword.jsp'
             	})
             }

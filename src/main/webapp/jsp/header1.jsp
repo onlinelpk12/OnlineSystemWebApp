@@ -14,9 +14,13 @@ window.onload = function(){
 	usernameEle.innerHTML = sessionStorage.getItem("username");
 	
 	let homepagelink = document.getElementById("homepagelink");
-	homepagelink.href = sessionStorage.getItem("userRole") == "Teacher" ? "hometeacher.jsp": "home.jsp";
+	homepagelink.href = sessionStorage.getItem("userRole") == "Teacher" ? "hometeacher.jsp" : 
+		    sessionStorage.getItem("enrolledCourses") == "LPK12" ? "home_student_logicds.jsp": 
+		    	sessionStorage.getItem("enrolledCourses") == "OnlineLPK12" ? "home_student_onlinelpk12.jsp": "home.jsp";
 	
 	}
+
+	
 	
 </script>
 

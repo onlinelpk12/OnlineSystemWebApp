@@ -29,6 +29,9 @@
 	    <br>
  	    <label for="password">Password</label>
 	    <input type="password" placeholder="Password" id="password" required>
+	     <label for="showPasswordCheckbox">Show Password</label>
+         <input type="checkbox" id="showPasswordCheckbox" onclick="togglePasswordVisibility()">     
+                     
  	    <br>
 	    <br>
             <input type="submit"  value="Login" >  <br>
@@ -39,6 +42,18 @@
 	</div>
       </div>
     </div>
+    <!-- toggle password -->  
+    <script>
+    function togglePasswordVisibility() {
+    	var passwordInput = document.getElementById("password");
+    	var checkbox = document.getElementById("showPasswordCheckbox");
+    	if (checkbox.checked) {
+    	    passwordInput.type = "text";
+    	} else {
+    	    passwordInput.type = "password";
+    	}
+    }	
+</script>
     <%@ include file = "footer.jsp" %>
   </body>
   <script type="text/javascript">
@@ -76,9 +91,19 @@
               	}
               	else if(data.content.roles=='Student'){
               		console.log(data.roles)
+	
 		  sessionStorage.setItem("userRole","Student")
-              	  location.href='home.jsp'
-              	}
+    		if (data.content.enrolledCourses == "OnlineLPK12"){ 
+    			sessionStorage.setItem("enrolledCourses","OnlineLPK12")
+    		location.href='home_student_onlinelpk12.jsp'
+    		} 
+    		else if (data.content.enrolledCourses == 'LPK12'){
+    		sessionStorage.setItem("enrolledCourses","LPK12")
+    		location.href='home_student_logicds.jsp' 
+    		} 
+    		else {
+    		sessionStorage.setItem("enrolledCourses","home.jsp") 
+    		location.href='home.jsp'}
             })
         }
         else{

@@ -173,7 +173,7 @@
 									<!-- <li>
 										<a href="#" id="goBackButton" onclick="history.back()" style="margin-top: -30px;margin-left: -55px;margin-bottom: -15px;"><img height="30" width="40" src="../images/back.png" style="margin-top:25px" ></a>
 									</li> -->
-									<a href="#" onclick="redirectToLessonPage()"><img src="../images/back.png" ></a>
+									<li><a href="#" onclick="redirectToLessonPage()"><img src="../images/back.png" ></a></li>
 									<li>
 										<button type="button" class="btn btn-default navbar-btn"
 											id="menu-toggle" value="getAccessibleDirectory">Directory</button>
@@ -184,8 +184,8 @@
 										aria-expanded="true" id="btn_new"> New <span class="caret"></span>
 									</a>
 										<ul class="dropdown-menu">
-											<li><a href="#" id="newFolder">New Folder</a></li>
-											<li><a href="#" id="newFile">New File</a></li>
+											<li><a href="javascript:void(0)" id="newFolder">New Folder</a></li>
+											<li><a href="javascript:void(0)" id="newFile">New File</a></li>
 										</ul></li>
 									<!-- Save Button -->
 									<li>

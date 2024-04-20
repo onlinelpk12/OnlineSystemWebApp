@@ -8,13 +8,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-	<script src="../js/verifytoken.js" type="text/javascript">  </script>
+
 	<link rel="stylesheet" href="../styles/lesson6.css">
-<script type="text/javascript">
-$(function(){
-    verifytoken();
-});
-</script>
+
     <link rel="stylesheet" href="../styles/style.css">
     <script src="../js/lessonDataStructureJSON.js"></script>
     <script src="../js/script.js"></script>  
@@ -299,39 +295,32 @@ $(function(){
             </div>
         </div>
     </section>
-    
+    <!--  -->
+    <!-- adding periodic table -->
     <section id="version-1-course-x-lesson-6-page-9" hidden>
         <div class="row">
         <div class="container">
-            	<h2 style="text-align:center;">Atomic Number - Carbon</h2>
-            	<ul class="lesson-list">
-               		<li class="main-point">Question</li>
-               		<ul class="sub-point">
-               			<li>What is the proton number of carbon ?</li>
-               			<ul classs="main-point">
-               				<li class="sub-point">The proton number of carbon is 6 it is shown on the top of the symbol.</li>
-               			</ul>                			
-               			<li class="sub-point">What is the atomic number of carbon?</li>
-               			<ul class="main-point">
-               				<li class="sub-point">The atomic number of carbon is 6. Because the atomic number is equal to the number of protons in an element.</li>
-               			</ul>
-               		</ul>                		
-                </ul>     
-                <div style="padding-bottom:130px; padding-right:180px">
-           			<img  id = "carbon" src="../images/lesson5/carbon.png" alt="Image" width="105" height="90" >
-           		</div>
-                          
-                <br><br><br>
+                <h2 style="text-align:center;">Periodic Table of the Elements</h2>
+           		<div>
+           		<ul class="lesson-list">
+                		<li class="sub-point">How to find an atomic number of an element from a periodic table?</li>
+                </ul>  
+           		<div style="padding-leftt: 100px;">
+           			<img  class = "atomGif" src="../images/lesson6/PeriodTable.png" align="middle" alt="Image" width="550" height="400" >
+           		</div>   
+                <br>
+                   <ol class="sub-point">Go to  <a href="https://forms.gle/H6Cfqr8ViiukEVGA6"> practise1</a></ol>
+                  <br>
                 <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
                     onclick="gotoPrevious(6, 0, 'version-1-course-x-lesson-6-page-9', false, -1)"> Previous
                 </button>
                 <button class="btn btn-primary pull-right" style="background-color :#1b84f5;"
                     onclick="gotoNext(6, 0, 'version-1-course-x-lesson-6-page-9', false, -1)"> Next
-                </button>
-                </div>
+                </button>   
+                </div> 
             </div>
         </div>
-    </section>
+    </section> 
     
     
     <!-- Lesson 6 assement 0 - program 0 -->
@@ -398,7 +387,7 @@ $(function(){
     </section>
     
      <!-- Lesson 6 assement 1 - program 1 -->
-	<section id="version-1-course-x-lesson-6-page-13" hidden>
+	<section id="version-1-course-x-lesson-6-page-14" hidden>
         <div class="row">
         <div class="container">
                 <h3><b>Activity : Extend Periodic Table Model -- Atomic Numbers</b></h3>

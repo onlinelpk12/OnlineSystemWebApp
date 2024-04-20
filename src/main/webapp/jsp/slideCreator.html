@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide Creator</title>
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+    #app {
+        display: flex;
+        height: 100%;
+    }
+    .sidebar {
+        flex: 0 0 250px;
+        background-color: #2a3f54;
+        color: white;
+        padding: 10px;
+        overflow-y: auto;
+    }
+    .sidebar h1 {
+        color: #fff;
+        cursor: text;
+    }
+    .main {
+        flex: 1;
+        background-color: #ECF0F1;
+        padding: 20px;
+        overflow-y: auto;
+    }
+    .preview {
+        flex: 1;
+        background-color: #ffffff;
+        padding: 20px;
+        border-left: solid 1px #d6d6d6;
+        overflow-y: auto;
+    }
+    #slidesList div {
+        padding: 8px;
+        margin-bottom: 5px;
+        background-color: #34495e;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    #slidesList div:hover {
+        background-color: #4e6a85;
+    }
+    button {
+        color: white;
+        background-color: #3498DB;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        width: 100%;
+    }
+    button:hover {
+        background-color: #2980B9;
+    }
+    .richTextEditor {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 10px;
+        height: 150px;
+        overflow-y: auto;
+    }
+    .richTextEditor:focus {
+        outline: none;
+        border-color: #3498DB;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+    input[type="text"]:focus {
+        outline: none;
+        border-color: #3498DB;
+    }
+</style>
+</head>
+<body>
+<div id="includedContent"></div>
+<div id="app">
+    <div class="sidebar">
+        <h1 contenteditable="true">Lesson Name</h1>
+        <button id="newSlide">New Slide</button>
+        <button id="deleteSlide">Delete Slide</button>
+        <div id="slidesList">
+            <!-- Slide titles will be added here dynamically -->
+        </div>
+    </div>
+
+    <div class="main">
+        <input type="text" id="slideTitleInput" placeholder="Slide Title">
+        <div class="richTextEditor" contenteditable="true" id="slideContentInput"></div>
+        <button id="compile">Compile</button>
+        <button id="save">Save</button>
+    </div>
+
+    <div class="preview">
+        <h2 id="previewTitle">Preview</h2>
+        <div id="previewContent">
+            <!-- Content preview will be shown here -->
+        </div>
+    </div>
+</div>
+
+<script>
+$(function(){
+    $("#includedContent").load("header1.jsp"); 
+  });
+    document.getElementById('newSlide').addEventListener('click', function() {
+        var slideTitle = prompt("Enter the slide title:");
+        if(slideTitle) {
+            addSlide(slideTitle);
+        }
+    });
+
+    document.getElementById('deleteSlide').addEventListener('click', function() {
+        // Add functionality to delete a slide
+    });
+
+    document.getElementById('compile').addEventListener('click', function() {
+        var title = document.getElementById('slideTitleInput').value;
+        var content = document.getElementById('slideContentInput').innerHTML;
+        document.getElementById('previewTitle').innerText = title;
+        document.getElementById('previewContent').innerHTML = content;
+    });
+
+    document.getElementById('save').addEventListener('click', function() {
+        // Add functionality to save the slide
+    });
+
+    function addSlide(title) {
+        var slidesList = document.getElementById('slidesList');
+        var slideElement = document.createElement('div');
+        slideElement.innerText = title;
+        slideElement.onclick = function() {
+            document.getElementById('slideTitleInput').value = title;
+            // To handle selecting and displaying existing content, you'll need additional logic
+        };
+        slidesList.appendChild(slideElement);
+    }
+
+    // Initialize with a default slide
+    addSlide('Slide Title');
+</script>
+</body>
+</html>

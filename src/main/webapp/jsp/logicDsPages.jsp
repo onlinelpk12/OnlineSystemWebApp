@@ -8,12 +8,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!-- <script src="../js/verifytoken.js" type="text/javascript"></script> -->
+<!-- -->
 <script type="text/javascript">
-	$(function() {
-		verifytoken();
-	});
-
 	function reInitiateFreshPage() {
 		sessionStorage.setItem("pageIdToShow", '');
 	}
@@ -58,12 +54,13 @@ a.disabled {
 					<li><a href="../jsp/lesson4ReviewIds.jsp"
 						onclick="reInitiateFreshPage()">Click here to View Lesson 4: Quick Review</a></li>
 					<p></p>
-					<li><a href="../jsp/lesson5lds.jsp"
-						onclick="reInitiateFreshPage()">Click here to View Lesson 5!</a></li>
-					<p></p>
 					<li><a href="../jsp/lesson4N5ReviewIds.jsp"
 						onclick="reInitiateFreshPage()">Click here to View Lesson 4, 5: Review of Computing and R</a></li>
 					<p></p>
+					<li><a href="../jsp/lesson5lds.jsp"
+						onclick="reInitiateFreshPage()">Click here to View Lesson 5!</a></li>
+					<p></p>
+					
 					<li><a href="../jsp/lesson6Ids.jsp"
 						onclick="reInitiateFreshPage()">Click here to View Lesson 6!</a></li>
 					<p></p>
