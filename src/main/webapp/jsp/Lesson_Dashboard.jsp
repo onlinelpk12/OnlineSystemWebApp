@@ -113,7 +113,10 @@
 
     function fetchLessons(courseId) {
         $.ajax({
-            url: `https://localhost:7155/api/CourseLesson/get?courseId=${courseId}`,
+            headers:{
+                'Authorization': "Bearer "+ sessionStorage.getItem("token")
+            },
+            url: `https://localhost:7155/api/Course/GetLessonsToEditById/${courseId}`,
             type: "GET",
             success: function(data) {
                 if (data && data.content) {
@@ -165,12 +168,10 @@
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify({
-                "lesson_name": lessonName,
-                "created_by": userId,
-                "created_at": new Date().toISOString(),
-                "modified_by": userId,
-                "modified_at": new Date().toISOString(),
-                "is_lesson_available": true
+                "lessonName": lessonName,
+                "createdBy": userId,
+                "modifiedBy": userId,
+                "isLessonAvailable": true
             }),
             success: function(response) {
                 console.log("Lesson saved successfully:", response);
