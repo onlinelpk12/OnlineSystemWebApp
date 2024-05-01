@@ -134,12 +134,12 @@
 
     function createLessonElement(lesson) {
         var buttons = $("<div class='lesson-buttons'></div>");
-        buttons.append(`<button class='btn btn-success publish-toggle' style='border-radius: 999px;'>${lesson.is_lesson_available ? "Unpublish" : "Publish"}</button>`);
+        buttons.append(`<button class='btn btn-success publish-toggle' style='border-radius: 999px;'>${lesson.isLessonAvailable ? "Unpublish" : "Publish"}</button>`);
         buttons.append(`<button class='btn btn-warning' style='margin-left: 5px; border-radius: 999px;' onclick='editLesson(${lesson.id})'>Edit</button>`);
         buttons.append(`<button class='btn btn-danger' style='margin-left: 5px; border-radius: 999px;' onclick='deleteLesson(${lesson.id})'>Delete</button>`);
         
         return $("<li class='lesson-item' style='background-color: #f2f2f2'></li>")
-            .append(`<span>${lesson.lesson_name}</span>`)
+            .append(`<span>${lesson.lessonName}</span>`)
             .append(buttons);
     }
     

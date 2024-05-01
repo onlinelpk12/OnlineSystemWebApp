@@ -151,7 +151,7 @@
                         .append($("<span>").text(course.courseName))
                         .append(
                             $("<div class='course-buttons'>")
-                            .append($("<button class='btn btn-success' style='border-radius:999px'>").text("Publish/UnPublish"))
+                            .append($("<button class='btn' style='border-radius:999px'>").text(course.isCourseAvailable?"Published":"UnPublish").addClass(course.isCourseAvailable?"btn-success" : "btn-danger"))
                             .append($("<button class='btn btn-warning' style='margin-left: 5px; border-radius:999px'>").text("Edit").click(function() { editCourse(course.courseId); }))
                             .append($("<button class='btn btn-danger' style='margin-left: 5px; border-radius:999px'>").text("Delete").click(function() { deleteCourse(course.courseId); }))
                         );
