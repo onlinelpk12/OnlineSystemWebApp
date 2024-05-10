@@ -11,6 +11,7 @@
     </head>
 
     <body> 
+    	<jsp:include page ="authRoutes.jsp" />
         <jsp:include page="header.jsp" />
 
         <div class="row">

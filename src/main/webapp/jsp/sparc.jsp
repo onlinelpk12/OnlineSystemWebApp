@@ -38,7 +38,7 @@
 	position: fixed;
 	margin: 0;
 	float: left;
-	width: 58%;
+	width: 40%;
 	height: 100%;
 	top: 50;
 }
@@ -150,6 +150,7 @@
 </style>
 </head>
 <body>
+	<%@ include file = "authRoutes.jsp" %>
 	<div id="wrapper" class="toggled">
 		<div id="sidebar-wrapper">
 			<div class="easy-tree" id="directory">
@@ -173,7 +174,7 @@
 									<!-- <li>
 										<a href="#" id="goBackButton" onclick="history.back()" style="margin-top: -30px;margin-left: -55px;margin-bottom: -15px;"><img height="30" width="40" src="../images/back.png" style="margin-top:25px" ></a>
 									</li> -->
-									<a href="#" onclick="redirectToLessonPage()"><img src="../images/back.png" ></a>
+									<li><a href="#" onclick="redirectToLessonPage()"><img src="../images/back.png" ></a></li>
 									<li>
 										<button type="button" class="btn btn-default navbar-btn"
 											id="menu-toggle" value="getAccessibleDirectory">Directory</button>
@@ -184,8 +185,8 @@
 										aria-expanded="true" id="btn_new"> New <span class="caret"></span>
 									</a>
 										<ul class="dropdown-menu">
-											<li><a href="#" id="newFolder">New Folder</a></li>
-											<li><a href="#" id="newFile">New File</a></li>
+											<li><a href="javascript:void(0)" id="newFolder">New Folder</a></li>
+											<li><a href="javascript:void(0)" id="newFile">New File</a></li>
 										</ul></li>
 									<!-- Save Button -->
 									<li>
@@ -296,9 +297,43 @@
 	</div>
 
 <script type="text/javascript">	
+//Function to create and download a new file
+function createFile(fileName, content = "") {
+    var blob = new Blob([content], { type: "text/plain" });
+    var link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = fileName;
+    link.click();
+}
+
+// Function to create a new folder (which is represented as an empty file)
+function createFolder(folderName) {
+    var fileName = folderName + "_folder";
+    createFile(fileName);
+}
+
+// Event listener for the "New Folder" button
+document.getElementById("newFolder").addEventListener("click", function() {
+    var folderName = prompt("Enter folder name:");
+    if (folderName !== null) {
+        createFolder(folderName);
+    }
+});
+
+// Event listener for the "New File" button
+document.getElementById("newFile").addEventListener("click", function() {
+    var fileName = prompt("Enter file name:");
+    if (fileName !== null) {
+        var fileContent = prompt("Enter file content:");
+        if (fileContent !== null) {
+            createFile(fileName, fileContent);
+        }
+    }
+});
+
 window.addEventListener('popstate', function (event) {
  // Redirect to your desired JSP file
- window.location.href = 'lesson.jsp';
+ window.location.href = 'lessonslist.html';
 
 });
 	let currentLearningOutcomeNumber = sessionStorage.getItem(sessionKeyCurrentLearningOutcomeNumber);
@@ -332,7 +367,7 @@ window.addEventListener('popstate', function (event) {
 	}	
 	
 	function redirectToLessonPage() {
- 		window.location.href = 'lesson.jsp';
+ 		window.location.href = 'lessonslist.html';
 	}
 	
 	function execute(){
@@ -508,6 +543,19 @@ window.addEventListener('popstate', function (event) {
           return Math.ceil(currentLearningOutcomeNumber / 2);
       }
 
+      $(document).on("change", "#new_fontsize", function() {
+		    let font_size = $(this).val();
+		    setEditorFontSize(font_size);
+		});
+
+		var setEditorFontSize = function(font_size) {
+		    if (font_size < 0 || font_size > 72) {
+		        return;
+		    }
+
+		    document.getElementById('editor').style.fontSize = font_size + 'px';
+		};
+
 	function SubmitSparc() {	
 		let _isSparcPassed = false;
 		let sessionKeyIsSparcPassed ="isSparcPassed";
@@ -559,6 +607,30 @@ window.addEventListener('popstate', function (event) {
     	    elementEditor.style.marginLeft ='-485px';
     	}
     });
+    $(document).ready(function() {
+        // Define JavaScript Functions
+        function createNewFile() {
+            let fileName = prompt("Enter the name of the new file:");
+            if (fileName) {
+                let ul = $('#directory ul');
+                let li = $('<li>').text(fileName + ".txt");
+                ul.append(li);
+            }
+        }
+
+        function createNewFolder() {
+            let folderName = prompt("Enter the name of the new folder:");
+            if (folderName) {
+                let ul = $('#directory ul');
+                let li = $('<li>').text(folderName).append($('<ul>'));
+                ul.append(li);
+            }
+        }
+
+        // Attach Click Events
+        $('#newFile').on('click', createNewFile);
+        $('#newFolder').on('click', createNewFolder);
+    }); 
 
 </script>
 	<%@ include file="sparc-footer.jsp"%>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide Creator</title>
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+    #app {
+        display: flex;
+        height: 100%;
+    }
+    .sidebar {
+        flex: 0 0 250px;
+        background-color: #2a3f54;
+        color: white;
+        padding: 10px;
+        overflow-y: auto;
+    }
+    .sidebar h1 {
+        color: #fff;
+        cursor: text;
+    }
+    .main {
+        flex: 1;
+        background-color: #ECF0F1;
+        padding: 20px;
+        overflow-y: auto;
+    }
+    .preview {
+        flex: 1;
+        background-color: #ffffff;
+        padding: 20px;
+        border-left: solid 1px #d6d6d6;
+        overflow-y: auto;
+    }
+    #slidesList div {
+        padding: 8px;
+        margin-bottom: 5px;
+        background-color: #34495e;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    
+    #slidesList div.selected{
+    	background: #8095aa;
+    }
+    
+    #slidesList div.unselected{
+    	background: #34495e;
+    }
+    
+    #slidesList div:hover {
+        background-color: #4e6a85;
+    }
+    button {
+        color: white;
+        background-color: #3498DB;
+        padding: 10px;
+        margin-bottom: .5rem;
+        margin-top: .3rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        width: 100%;
+    }
+    button:hover {
+        background-color: #2980B9;
+    }
+    .richTextEditor {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 10px;
+        height: 150px;
+        width: 100%;
+        box-sizing: border-box;
+        overflow-y: auto;
+    }
+    .richTextEditor:focus {
+        outline: none;
+        border-color: #3498DB;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+    input[type="text"]:focus {
+        outline: none;
+        border-color: #3498DB;
+    }
+</style>
+</head>
+<body>
+<div id="includedContent"></div>
+<div id="app">
+    <div class="sidebar">
+        <h1 contenteditable="true">Lesson Name</h1>
+        <button id="newSlide">New Slide</button>
+        <button id="deleteSlide">Delete Slide</button>
+        <div id="slidesList">
+            <!-- Slide titles will be added here dynamically -->
+        </div>
+    </div>
+
+    <div class="main">
+        <input type="text" id="slideTitleInput" placeholder="Slide Title">
+        <input class="richTextEditor" contenteditable="true" id="slideContentInput"></input>
+        <button id="compile">Compile</button>
+        <button id="save">Save</button>
+    </div>
+
+    <div class="preview">
+        <h2 id="previewTitle">Preview</h2>
+        <div id="previewContent">
+            <!-- Content preview will be shown here -->
+        </div>
+    </div>
+</div>
+
+<script>
+	window.addEventListener("load", (event) => {
+	  	displayAllTitles()
+	});
+
+    document.getElementById('newSlide').addEventListener('click', function() {
+        var slideTitle = prompt("Enter the slide title:");
+        if(slideTitle) {
+            addSlide(slideTitle, '');
+        }
+    });
+
+    document.getElementById('deleteSlide').addEventListener('click', function() {
+        // Add functionality to delete a slide
+        const slidesList = document.getElementById('slidesList')
+        var title;
+        for(const child of slidesList.children){
+        	if (child.classList.contains('selected')) title = child.getAttribute('id')
+        }
+        deleteSlide(title)
+	    displayAllTitles();
+    });
+
+    document.getElementById('compile').addEventListener('click', function() {
+        var title = document.getElementById('slideTitleInput').value;
+        var content = document.getElementById('slideContentInput').value;
+        document.getElementById('previewTitle').innerText = title;
+        document.getElementById('previewContent').innerHTML = content;
+    });
+
+    document.getElementById('save').addEventListener('click', function() {
+        // Add functionality to save the slide
+        var slideTitleInput = document.getElementById('slideTitleInput')
+        
+        var slideContentInput = document.getElementById('slideContentInput')
+        
+       	if(slideTitleInput.value === '') return alert('please enter a non-empty title')
+       	
+       	console.log(slideContentInput.value)
+       	
+       	saveToStorage(slideTitleInput.value, slideContentInput.value)
+       	
+    });
+
+    function saveToStorage(key, value){
+    	try{
+    		localStorage.setItem(key, JSON.stringify(value))
+    		console.log('data saved')
+    	}catch(error){
+    		console.log('data could not be saved' + error)
+    	}
+    }
+    
+    function loadFromStorage(){
+    	const items = {};
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key); // Define value here for accessibility in catch block
+            try {
+                items[key] = JSON.parse(value);
+            } catch (error) {
+                console.error('Failed to load item for key:', key, error);
+                items[key] = value; // Store raw value if it's not JSON
+            }
+        }
+        return items;
+    }
+    
+    function deleteSlide(title){
+    	if (localStorage.getItem(title) !== null) {
+    	    localStorage.removeItem(title);
+    	} else {
+    	    alert('Item not found');
+    	}
+    }
+    
+    function displayAllTitles(){
+    	var allSlides = loadFromStorage()
+	  	for (const key in allSlides) {
+  			if (allSlides.hasOwnProperty(key)) {
+    			console.log(`${key}: ${allSlides[key]}`);
+    			addSlide(key, allSlides[key])
+  			}
+		}
+    }
+    
+    
+    function addSlide(title, content) {
+        var slidesList = document.getElementById('slidesList');
+        var DomChildNodes = slidesList.childNodes
+        var childNodes = Array.from(slidesList.childNodes).slice(3);
+        var flag = false
+        
+        for(var i = 0; i<childNodes.length; i++){
+        	if(childNodes[i].getAttribute('id') == title){
+        		alert('The title already exists, please enter another title')
+        		flag = true
+        		break;
+        	}
+        }
+        if (flag == true) return
+        var slideElement = document.createElement('div');
+        slideElement.innerText = title;
+        slideElement.setAttribute('id', title);
+        slideElement.setAttribute('data-content', content)
+        slideElement.onclick = function() {
+            document.getElementById('slideTitleInput').value = title;
+            document.getElementById('slideContentInput').value = content;
+            // To handle selecting and displaying existing content, you'll need additional logic
+			for (const child of slidesList.children) {
+  				if(child.getAttribute('id') === title){
+  					child.classList.add('selected')
+  				}else {
+  					if(child.classList.contains('selected')) child.classList.remove('selected')
+  				}
+			}
+            
+        };
+        slidesList.appendChild(slideElement);
+    }
+
+    // Initialize with a default slide
+    addSlide('Slide Title');
+</script>
+</body>
+</html>

@@ -8,13 +8,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-	 <script src="../js/verifytoken.js" type="text/javascript">  </script>
-	 <link rel="stylesheet" href="../styles/lesson2.css">
 <script type="text/javascript">
-$(function(){
-    verifytoken();
-});
-</script>
+    function reInitiateFreshPage(){
+            sessionStorage.setItem("pageIdToShow",'version-1-course-x-lesson-11-page-1');
+    }
+  </script>
+	
+	 <link rel="stylesheet" href="../styles/lesson2.css">
+
     <link rel="stylesheet" href="../styles/style.css">
     <script src="../js/lessonDataStructureJSON.js"></script>
     <script src="../js/script.js"></script>  
@@ -110,7 +111,50 @@ $(function(){
   list-style-type: square; /* Square for sub-sub points */
 }
 }
-}   
+.slide-buttons{
+            float: left;
+            width: 20%; /* Adjust width as needed */
+            padding: 20px;
+        } 
+              .lesson-nav {
+        float: left;
+        width: 20%; /* Adjust width as needed */
+        padding: 20px;
+      }
+
+      .slide-btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #337ab7; /* Bootstrap primary color */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .slide-btn:hover {
+        background-color: #286090; /* Darker shade of primary color */
+      }
+
+      /* Styles for lesson slides */
+      .lesson-slides {
+        float: left;
+        width: 80%; /* Adjust width as needed */
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .lesson-slides section {
+        display: none;
+      }
+
+      /* Show the first slide initially */
+      .lesson-slides section:first-child {
+        display: block;
+      }
     </style>
 
 </head>
@@ -120,6 +164,17 @@ $(function(){
 
 <body>
     <script type="text/javascript"> 
+    function gotoPage(pageId) {
+        // Hide all pages
+        var allPages = document.querySelectorAll('.pages section');
+        allPages.forEach(function(page) {
+            page.hidden = true;
+        });
+
+        // Show the selected page
+        var selectedPage = document.getElementById(pageId);
+        selectedPage.hidden = false;
+    }
         $( document ).ready(function() { 
             sessionStorage.removeItem(sessionKeyIsAssessmentPassed);
             sessionStorage.removeItem(sessionKeyIsSparcPassed);
@@ -142,24 +197,25 @@ $(function(){
   		}           
     });    
     </script>
+    <%@ include file = "authRoutes.jsp" %>
 	<%@ include file = "header1.jsp" %>
-  <!--   <section id="version-1-course-x-lesson-10-page-1" class="container" hidden>
-        <div class="row">
-            <div class="col-md-8 content" style="margin-left:20rem">
-            <h1 style="text-align:center">  Lesson 10: </h1> 
-            <h1 style="text-align:center">  Modeling Periodic Table </h1> <br>
-            <a class="btn btn-primary pull-right"
-                onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-1', false, -1)"> Next </a>
-            </div>
+	<div class="lesson-nav">
+        <!-- Slide buttons here -->
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-10-page-1">Slide 1</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-10-page-2">Slide 2</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-10-page-3">Slide 3</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-10-page-4">Slide 4</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-10-page-5">Slide 5</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-10-page-6">Slide 6</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-10-page-7">Slide 7</button>
         </div>
-    </section> -->
-    
-    <section id="version-1-course-x-lesson-10-page-1" hidden>
+        <div class="pages">
+        <section id="version-1-course-x-lesson-10-page-1" hidden>
         <div class="row">
             <div class="container" >
             <h2 style="text-align:center">  Lesson10:  </h2> <br>
             <h2 style="text-align:center">  Modeling Periodic Table </h2>
-            <button class="btn btn-primary btn-lg mx-auto pull-right" onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-1', false, -1)" style="display:flex; margin-top:50px;"> <p style="width:100%; text-align:center;margin:0">Next </p> </button>
+            <!-- <button class="btn btn-primary btn-lg mx-auto pull-right" onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-1', false, -1)" style="display:flex; margin-top:50px;"> <p style="width:100%; text-align:center;margin:0">Next </p> </button> -->
             </div>
         </div>
     </section>
@@ -197,8 +253,8 @@ $(function(){
                     onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-2', false, -1)"> Next 
                 </a> -->
               <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(10, 0, 'version-1-course-x-lesson-10-page-2', false, -1)">Previous</button>
-        			<button class="btn btn-primary" onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-2', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(10, 0, 'version-1-course-x-lesson-10-page-2', false, -1)">Previous</button>
+        			<button class="btn btn-primary" onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-2', false, -1)">Next</button> -->
     			</div>
             </div>
         </div>
@@ -236,8 +292,8 @@ $(function(){
                     onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-3', false, -1)"> Next
                 </a> -->
               <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(10, 0, 'version-1-course-x-lesson-10-page-3', false, -1)">Previous</button>
-        			<button class="btn btn-primary" onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-3', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(10, 0, 'version-1-course-x-lesson-10-page-3', false, -1)">Previous</button>
+        			<button class="btn btn-primary" onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-3', false, -1)">Next</button> -->
     			</div>
             </div>
         </div>
@@ -299,8 +355,8 @@ $(function(){
             <a class="btn btn-primary pull-right"
                 onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-4', false, -1)"> Next </a> -->
              <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(10, 0, 'version-1-course-x-lesson-10-page-4', false, -1)">Previous</button>
-        			<button class="btn btn-primary" onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-4', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(10, 0, 'version-1-course-x-lesson-10-page-4', false, -1)">Previous</button>
+        			<button class="btn btn-primary" onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-4', false, -1)">Next</button> -->
     			</div>
             </div>
         </div>  
@@ -347,8 +403,8 @@ $(function(){
             <a class="btn btn-primary pull-right"
                 onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-5', false, -1)"> Next </a> -->
              <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(10, 0, 'version-1-course-x-lesson-10-page-5', false, -1)">Previous</button>
-        			<button class="btn btn-primary" onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-5', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(10, 0, 'version-1-course-x-lesson-10-page-5', false, -1)">Previous</button>
+        			<button class="btn btn-primary" onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-5', false, -1)">Next</button> -->
     			</div>
             </div>
             </div>
@@ -401,8 +457,8 @@ $(function(){
             <a class="btn btn-primary pull-right" id="nextButton" disabled
                 onclick="gotoNext(10, 2, 'version-1-course-x-lesson-10-page-6', false, -1)"> Next </a> -->
             <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(10, 0, 'version-1-course-x-lesson-10-page-6', false, -1)">Previous</button>
-        			<button class="btn btn-primary" onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-6', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(10, 0, 'version-1-course-x-lesson-10-page-6', false, -1)">Previous</button>
+        			<button class="btn btn-primary" onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-6', false, -1)">Next</button> -->
     			</div>
             </div>
         </div>  
@@ -413,11 +469,28 @@ $(function(){
             <div class="container" >
            
             <h1 style="text-align:center"> End of Lesson </h1> <br>
-            <a class="btn btn-primary pull-right"
-                onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-7', false, -1)"> Next </a>
+     
+                            
+                            <div class="d-flex justify-content-between">
+                                <!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(10, 0, 'version-1-course-x-lesson-10-page-7', false, -1)">Previous</button> -->
+    
+                                <a class="btn btn-primary" href="../jsp/lesson11.jsp" onclick="reInitiateFreshPage()">Next Lesson</a>
+                            </div>
             </div>
         </div>
-    </section>
+    </section></div>
+  <!--   <section id="version-1-course-x-lesson-10-page-1" class="container" hidden>
+        <div class="row">
+            <div class="col-md-8 content" style="margin-left:20rem">
+            <h1 style="text-align:center">  Lesson 10: </h1> 
+            <h1 style="text-align:center">  Modeling Periodic Table </h1> <br>
+            <a class="btn btn-primary pull-right"
+                onclick="gotoNext(10, 0, 'version-1-course-x-lesson-10-page-1', false, -1)"> Next </a>
+            </div>
+        </div>
+    </section> -->
+    
+    
     
     
      

@@ -8,13 +8,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-	 <script src="../js/verifytoken.js" type="text/javascript">  </script>
+	
 	 <link rel="stylesheet" href="../styles/lesson2.css">
-<script type="text/javascript">
-$(function(){
-    verifytoken();
-});
-</script>
+
     <link rel="stylesheet" href="../styles/style.css">
     <script src="../js/lessonDataStructureJSON.js"></script>
     <script src="../js/script.js"></script>  
@@ -87,13 +83,68 @@ $(function(){
 
 
 }
-}  
+.slide-buttons{
+            float: left;
+            width: 20%; /* Adjust width as needed */
+            padding: 20px;
+        }  
+              .lesson-nav {
+        float: left;
+        width: 20%; /* Adjust width as needed */
+        padding: 20px;
+      }
+
+      .slide-btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #337ab7; /* Bootstrap primary color */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .slide-btn:hover {
+        background-color: #286090; /* Darker shade of primary color */
+      }
+
+      /* Styles for lesson slides */
+      .lesson-slides {
+        float: left;
+        width: 80%; /* Adjust width as needed */
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .lesson-slides section {
+        display: none;
+      }
+
+      /* Show the first slide initially */
+      .lesson-slides section:first-child {
+        display: block;
+      }
+ 
     </style>
 
   
 </head>
 <body>
     <script type="text/javascript"> 
+    function gotoPage(pageId) {
+        // Hide all pages
+        var allPages = document.querySelectorAll('.pages section');
+        allPages.forEach(function(page) {
+            page.hidden = true;
+        });
+
+        // Show the selected page
+        var selectedPage = document.getElementById(pageId);
+        selectedPage.hidden = false;
+    }
         $( document ).ready(function() { 
             sessionStorage.removeItem(sessionKeyIsAssessmentPassed);
             sessionStorage.removeItem(sessionKeyIsSparcPassed);
@@ -111,7 +162,22 @@ $(function(){
   		}           
     });    
     </script>
+    <%@ include file = "authRoutes.jsp" %>
 	<%@ include file = "header1.jsp" %>
+	<div class="lesson-nav">
+        <!-- Slide buttons here -->
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-12-page-1">Slide 1</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-12-page-2">Slide 2</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-12-page-3">Slide 3</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-12-page-4">Slide 4</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-12-page-5">Slide 5</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-12-page-6">Slide 6</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-12-page-7">Slide 7</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-12-page-10">Slide 8</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-12-page-11">Slide 9</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-12-page-12">Slide 10</button>
+</div>
+        
     <!-- <section id="version-1-course-x-lesson-12-page-1" class="container" hidden>
         <div class="row">
             <div class="col-md-8 content" style="margin-left:20rem">
@@ -122,16 +188,19 @@ $(function(){
             </div>
         </div>
     </section> -->
+    
+    <!-- PAGE -1  -->
+    <div class="pages">
     <section id="version-1-course-x-lesson-12-page-1" hidden>
         <div class="row">
             <div class="container" >
             <h2 style="text-align:center">  Lesson12:  </h2> <br>
             <h2 style="text-align:center">  Modeling Proton Numbers</h2>
-            <button class="btn btn-primary btn-lg mx-auto pull-right" onclick="gotoNext(12, 0, 'version-1-course-x-lesson-12-page-1', false, -1)" style="display:flex; margin-top:50px;"> <p style="width:100%; text-align:center;margin:0">Next </p> </button>
+           <!--  <button class="btn btn-primary btn-lg mx-auto pull-right" onclick="gotoNext(12, 0, 'version-1-course-x-lesson-12-page-1', false, -1)" style="display:flex; margin-top:50px;"> <p style="width:100%; text-align:center;margin:0">Next </p> </button>-->
             </div>
         </div>
     </section>
-    
+    <!-- PAGE - 2 -->
     <section id="version-1-course-x-lesson-12-page-2"  text-align:center hidden>
         <div class="row">
          <div class="container" >
@@ -159,12 +228,13 @@ $(function(){
                     onclick="gotoNext(12, 0, 'version-1-course-x-lesson-12-page-2', false, -1)"> Next 
                 </a> -->
                  <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(12, 0, 'version-1-course-x-lesson-12-page-2', false, -1)">Previous</button>
-        			<button class="btn btn-primary" onclick="gotoNext(12, 0, 'version-1-course-x-lesson-12-page-2', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(12, 0, 'version-1-course-x-lesson-12-page-2', false, -1)">Previous</button>
+        			<button class="btn btn-primary" onclick="gotoNext(12, 0, 'version-1-course-x-lesson-12-page-2', false, -1)">Next</button>-->
     			</div>
             </div>
         </div>
     </section>
+<!-- PAGE - 3 -->
     <section id="version-1-course-x-lesson-12-page-3"  text-align:center hidden>
         <div class="row">
              <div class="container" >
@@ -195,8 +265,10 @@ $(function(){
                 	
                      
 					  
-					  <img src="../images/lesson12/lesson12f.jpg" alt="Image" style="display:block; margin:auto" width="200" height="200">
-                <br><br> 
+<!--                                           <img src="../images/lesson12/lesson12f.jpg" alt="Image" style="display:block; margin:auto" width="200" height="200">
+                
+ -->                 
+<br><br> 
 					 
                <!--  <a class="btn btn-primary pull-left"
                     onclick="gotoPrevious(12, 0, 'version-1-course-x-lesson-12-page-3', false, -1)"> Previous
@@ -205,12 +277,189 @@ $(function(){
                     onclick="gotoNext(12, 0, 'version-1-course-x-lesson-12-page-3', false, -1)"> Next 
                 </a> -->
                  <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(12, 0, 'version-1-course-x-lesson-11-page-3', false, -1)">Previous</button>
-        		<!-- 	<button class="btn btn-primary" onclick="gotoNext(12, 0, 'version-1-course-x-lesson-11-page-3', false, -1)">Next</button> -->
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(12, 0, 'version-1-course-x-lesson-12-page-3', false, -1)">Previous</button>
+        	<button class="btn btn-primary" onclick="gotoNext(12, 0, 'version-1-course-x-lesson-12-page-3', false, -1)">Next</button>-->	
+<!-- 	<button class="btn btn-primary" onclick="gotoNext(12, 0, 'version-1-course-x-lesson-11-page-3', false, -1)">Next</button> -->
     			</div>
+            
+
+</div>
+        </div>
+    </section>
+    
+     <!-- PAGE-4 -->
+    <section id="version-1-course-x-lesson-12-page-4"  text-align:center hidden>
+        <div class="row">
+         <div class="container" >
+          
+                <h1 class="text-primary" style="text-align:center"> Developing Computer Model on Proton number</h1>
+                        <ul class="main-point">
+                        <li> <b>We will develop a model (facts/rules) for answering proton number questions from atomic numbers</b></li>
+                        <li ><b>[Design of activities] - General Pattern: </b></li>
+                        </ul>
+                        <ul class="main-point">
+                    <li><b>when using earlier concepts (e.g., asking a query), either a review is given or some materials provided for students to easily refer to? </b></li>
+                    </ul>
+                    <ul class = "sub-points">
+                    <li>When ask students to model a piece of information (using new LP construct), we may directly give the construct and let students to figure out a connection between the knowledge and the model? Then we can provide some guides?</li>
+                    </ul>
+                <br><br>
+                 <div class="d-flex justify-content-between">
+                               <!--  <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(12, 0, 'version-1-course-x-lesson-12-page-4', false, -1)">Previous</button>
+                                <button class="btn btn-primary" onclick="gotoNext(12, 0, 'version-1-course-x-lesson-12-page-4', false, -1)">Next</button>-->
+                            </div>
             </div>
         </div>
     </section>
+    <!-- PAGE-5 -->
+    <section id="version-1-course-x-lesson-12-page-5"  text-align:center hidden>
+        <div class="row">
+         <div class="container" >
+          
+                <h1 class="text-primary" style="text-align:center"> Developing Computer Model on Proton number</h1>
+                <ul class="main-point">
+                        <li> <b>We will develop a model (facts/rules) for answering proton number questions from atomic numbers</b></li>
+                        <li ><b>[Design of activities] - particulars </b></li>
+                        </ul>
+                        <ul class="sub-points">
+                    <li>A clear question of designing (vocabularies of developing = design + coding + debugging) a model to answer the question of proton numbers of elements GIVEN atomic number AND intended specification of protons(E, N)? </li>
+                    </ul>
+                    <ul class = "sub-points">
+                    <li>[maybe showing the facts on atomic numbers] Ask students to propose designs? [ 5 minutes ] </li>
+                    </ul>
+                    <ul class = "sub-points">
+                    <li>One possible design - write facts using protons() manually (using atomic number information).</li>
+                    </ul>
+                    
+                        
+              <br><br>
+                                        <div class="d-flex justify-content-between">
+                                <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(12, 0, 'version-1-course-x-lesson-12-page-5', false, -1)">Previous</button>
+                                <button class="btn btn-primary" onclick="gotoNext(12, 0, 'version-1-course-x-lesson-12-page-5', false, -1)">Next</button>-->
+                            </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- PAGE-6 -->
+    <section id="version-1-course-x-lesson-12-page-6"  text-align:center hidden>
+        <div class="row">
+         <div class="container" >
+          
+                <h1 class="text-primary" style="text-align:center"> Developing Computer Model on Proton number</h1>
+                <ul class="main-point">
+                        <li> <b>As human beings, we may need to collect all the atomic numbers for each element from the periodic table. Once done, how do we answer the questions of the protons? [with atomic number info available, ask student the proton number] [5 minutes discussion?] </b></li>
+                        </ul>
+                        <ul class="sub-points">
+                        <li class="main-point"><b>Okay some of us use the knowledge: </b></li>                  
+                    <li>atomic number of an element is the number of protons of any atom of the element. </li>
+                    </ul>
+                    <ul class="main-point">
+                        <li> <b>Now lets apply our methodology to represent this information.</b></li>
+                        <li class= "sub-point"><b>Objects:</b> [note the arguments, maybe need an English teaching expert on how to provide arguments in a sentence.] </li>
+                        <li class="sub-point"><b>E:</b> an element </li>
+                        <li class="sub-point"><b>NP:</b> the number of protons of element E</li>
+                        <li class="sub-point"><b>NA:</b> the atomic number of E </li>
+                        </ul>
+                    
+                    
+                        
+              <br><br>
+                                        <div class="d-flex justify-content-between">
+                                <!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(12, 0, 'version-1-course-x-lesson-12-page-6', false, -1)">Previous</button>
+                                <button class="btn btn-primary" onclick="gotoNext(12, 0, 'version-1-course-x-lesson-12-page-6', false, -1)">Next</button>-->
+                            </div>
+            </div>
+        </div>
+    </section>
+    <!-- PAGE-7 -->
+        <section id="version-1-course-x-lesson-12-page-7"  text-align:center hidden>
+        <div class="row">
+         <div class="container" >
+          
+                <h1 class="text-primary" style="text-align:center"> Developing Computer Model on Proton number</h1>
+                <ul class="main-point">
+                        <li> <b>Relations:  (which objects are related? Give that relationship a name):</b></li>
+                        <li class="sub-point"><b> E and NP:</b> protonNumber(E, NP) </li>
+                        <li class="sub-point"><b> E and NA:</b> atomicNumber(E, NA) </li>
+                        <li class="sub-point"><b>NP and NA are the same:</b>  NP = NA </li>
+                        </ul>
+                        <ul class="sub-points">
+                        <li class="main-point"><b>Logic connectives relating relation instances -- how these relation instances are related? </b></li>                  
+                    </ul>
+              <br><br>
+                                        <div class="d-flex justify-content-between">
+                               <!--  <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(12, 0, 'version-1-course-x-lesson-12-page-7', false, -1)">Previous</button>
+                                <button class="btn btn-primary" onclick="gotoNext(12, 0, 'version-1-course-x-lesson-12-page-7', false, -1)">Next</button>-->
+                            </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- PAGE-8 -->
+    <section id="version-1-course-x-lesson-12-page-10"  text-align:center hidden>
+        <div class="row">
+         <div class="container" >
+          
+                <h1 class="text-primary" style="text-align:center"> Developing Computer Model on Proton number</h1>
+                <ul class="main-point">
+                        <li> <b>One methodology - decide which relation instance(s) can be obtained from which other relation instances? Or which is given and which is derivable from the given ones? Which relation instances imply which relation instance? [We may need a few different descriptions of the methodology] [research: we can collect data to see how students respond to these methodology and/or general responses to the task of developing model in this case] </b></li>
+                        </ul>
+                        
+              <br><br>
+                                        <div class="d-flex justify-content-between">
+                                <!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(12, 0, 'version-1-course-x-lesson-12-page-10', false, -1)">Previous</button>
+                                <button class="btn btn-primary" onclick="gotoNext(12, 0, 'version-1-course-x-lesson-12-page-10', false, -1)">Next</button>-->
+                            </div>
+            </div>
+        </div>
+    </section>
+    <!-- PAGE-9 -->
+    <section id="version-1-course-x-lesson-12-page-11"  text-align:center hidden>
+        <div class="row">
+         <div class="container" >
+          
+                <h1 class="text-primary" style="text-align:center"> Developing Computer Model on Proton number</h1>
+                <ul class="main-point">
+                        <li> <b>Example of possible discussions: </b></li>
+                        </ul>
+                        <ul class="sub-point">
+                        <li> English or pseudo code? [which is easier for students?]  English: Proton number of an element depends on the atomic number.  [objects depends on objects may be more natural to students. But relation instance depend on another might not be natural? Find by research] Pseudocode: protonNumber(E, NP) depends atomicNumber(E, NA). How about NP = NA? </li>
+                        <li> <b>Pseudocode:</b> protonNumber(E, NP) depends on atomicNumber(E, NA) AND NP = NA. In this case, using implication, we say if atomicNumber(E, NA) AND NP = NA then protonNumber(E, NP). We introduce :- for if and <b>,</b> for AND. We use rule:
+pN(E, NP) :- aN(E, NA), NP=NA </li>
+                        
+                        </ul>
+                        
+              <br><br>
+                                        <div class="d-flex justify-content-between">
+                                <!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(12, 0, 'version-1-course-x-lesson-12-page-11', false, -1)">Previous</button>
+                                <button class="btn btn-primary" onclick="gotoNext(12, 0, 'version-1-course-x-lesson-12-page-11', false, -1)">Next</button>-->
+                            </div>
+            </div>
+        </div>
+    </section>
+     <!-- PAGE-10 -->
+    <section id="version-1-course-x-lesson-12-page-12"  text-align:center hidden>
+        <div class="row">
+         <div class="container" >
+          
+                <h1 class="text-primary" style="text-align:center"> Developing Computer Model on Proton number</h1>
+                <ul class="main-point">
+                        <li> <b>Make sure students are able to write the rule and read it. [5 minutes] </b></li>
+                        <li><b>A new task:</b> what if we know the proton numbers, how do we develop model to answer questions on atomic number? </li>
+                        </ul>
+                        
+              <br><br>
+                                        <div class="d-flex justify-content-between">
+                               <!--  <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(12, 0, 'version-1-course-x-lesson-12-page-12', false, -1)">Previous</button>-->
+<!--                                 <button class="btn btn-primary" onclick="gotoNext(18, 0, 'version-1-course-x-lesson-18-page-1', false, -1)">Next</button>
+ -->                            </div>
+
+	</div>
+
+        </div>
+    </section>
+    </div>
     
     <%@ include file = "footer1.jsp" %>
      <script src="../js/lesson11/validation.js" type="text/javascript">  </script>

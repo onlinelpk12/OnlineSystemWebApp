@@ -1,7 +1,7 @@
 <html lang="en">
 
 <head>
-<title>Lesson 2</title>
+<title>Lesson 4</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -17,15 +17,9 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
 	type="text/javascript"></script>
-<script src="../js/verifytoken.js" type="text/javascript">
-	
-</script>
+
 <link rel="stylesheet" href="../styles/lesson4lds.css">
-<script type="text/javascript">
-	$(function() {
-		verifytoken();
-	});
-</script>
+
 <link rel="stylesheet" href="../styles/style.css">
 <script src="../js/ldslessonDataStructureJSON.js"></script>
 <script src="../js/script.js">
@@ -35,28 +29,31 @@
 
 <body>
 	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							sessionStorage
-									.removeItem(sessionKeyIsAssessmentPassed);
-							sessionStorage.removeItem(sessionKeyIsSparcPassed);
+    $(document).ready(function() {
+        sessionStorage.removeItem(sessionKeyIsAssessmentPassed);
+        sessionStorage.removeItem(sessionKeyIsSparcPassed);
 
-							let pageIdToShow = sessionStorage
-									.getItem(sessionKeyShowPageId);
-							if (pageIdToShow == null || pageIdToShow == ''
-									|| pageIdToShow == undefined) {
-								let firstPageIdOfCurrentLesson = GetFirstPageIdOfCurrentLessonFromJSON(4);
-								let currentSection = document
-										.getElementById(firstPageIdOfCurrentLesson);
-								currentSection.hidden = false;
-							} else {
-								let currentSection = document
-										.getElementById(pageIdToShow);
-								currentSection.hidden = false;
-							}
-						});
-	</script>
+        let pageIdToShow = sessionStorage.getItem(sessionKeyShowPageId);
+        if (pageIdToShow == null || pageIdToShow == '' || pageIdToShow == undefined) {
+            let firstPageIdOfCurrentLesson = GetFirstPageIdOfCurrentLessonFromJSON(4);
+            let currentSection = document.getElementById(firstPageIdOfCurrentLesson);
+            currentSection.hidden = false;
+        } else {
+            let currentSection = document.getElementById(pageIdToShow);
+            currentSection.hidden = false;
+        }
+    }); 
+
+    function gotoPage(pageId) {
+        // Hiding all sections
+        document.querySelectorAll('.container').forEach(function(el) {
+            el.hidden = true;
+        });
+        // Showing the specified page
+        document.getElementById(pageId).hidden = false;
+    }
+</script>
+	<%@ include file = "authRoutes.jsp" %>
 	<%@ include file="header.jsp"%>
 
 	<section id="version-1-course-lds-lesson-4-page-1" class="container"
@@ -94,6 +91,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-2', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -178,12 +177,14 @@
 				</div>
 				<br>
 				<div class="d-flex justify-content-between">
-				<a class="btn btn-primary pull-left"
-					onclick="gotoPrevious(4, 0, 'version-1-course-lds-lesson-4-page-3', false, -1)">
-					Previous </a> <a class="btn btn-primary pull-right"
-					onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-3', false, -1)">
-					Next </a>
-				</div> 
+                <a class="btn btn-primary pull-left"
+                    onclick="gotoPrevious(4, 0, 'version-1-course-lds-lesson-4-page-3', false, -1)">
+                    Previous </a> 
+                <a class="btn btn-primary pull-right"
+                    onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-3', false, -1)">
+                    Next </a>
+                <button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+            </div> 
 			</div>
 		</div>
 	</section>
@@ -316,6 +317,8 @@
 					Previous </a> <a class="btn btn-primary pull-right"
 					onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-4', false, -1)">
 					Next </a>
+					<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+					
 				</div> 
 			</div>
 		</div>
@@ -340,6 +343,8 @@
 					Previous </a> <a class="btn btn-primary pull-right"
 					onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-5', false, -1)">
 					Next </a>
+					<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+					
 				</div> 
 			</div>
 		</div>
@@ -412,6 +417,8 @@
 					Previous </a> <a class="btn btn-primary pull-right"
 					onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-6', false, -1)">
 					Next </a></div>
+					<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+					
 			</div>
 		</div>
 	</section>
@@ -483,6 +490,8 @@
 					Previous </a> <a class="btn btn-primary pull-right"
 					onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-7', false, -1)">
 					Next </a></div>
+					<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+					
 			</div>
 		</div>
 	</section>	
@@ -533,6 +542,8 @@
 					Previous </a> <a class="btn btn-primary pull-right"
 					onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-8', false, -1)">
 					Next </a></div>
+					<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+					
 			</div>
 		</div>
 	</section>
@@ -599,6 +610,8 @@
 						Previous </a> <a class="btn btn-primary pull-right"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-9', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -635,6 +648,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-10', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -657,6 +672,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-11', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -716,6 +733,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-12', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -780,6 +799,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-13', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -807,6 +828,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-14', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -827,6 +850,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-15', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -910,6 +935,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-16', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -927,6 +954,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-17', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -959,6 +988,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-18', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -994,6 +1025,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-19', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -1040,6 +1073,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-20', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -1080,6 +1115,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-21', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -1099,6 +1136,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-22', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -1145,6 +1184,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-23', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -1167,6 +1208,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-24', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -1204,6 +1247,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-25', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -1247,6 +1292,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-26', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -1288,6 +1335,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-27', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -1332,6 +1381,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-28', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -1350,6 +1401,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-29', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -1382,6 +1435,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-30', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -1405,6 +1460,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-31', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -1434,6 +1491,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-32', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -1461,6 +1520,8 @@
 						Previous </a> <a class="btn btn-primary"
 						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-33', false, -1)">
 						Next </a>
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 				</div>
 			</div>
 		</div>
@@ -1486,18 +1547,16 @@
 				<div class="d-flex justify-content-between">
 					<a class="btn btn-primary"
 						onclick="gotoPrevious(4, 0, 'version-1-course-lds-lesson-4-page-34', false, -1)">
-						Previous </a> <a class="btn btn-primary"
-						onclick="gotoNext(4, 0, 'version-1-course-lds-lesson-4-page-34', false, -1)">
-						Next </a>
-							
-				</div>
+						Previous </a> 
+						<button class="btn btn-primary" onclick="gotoPage('version-1-course-lds-lesson-4-page-1')">Finish</button>
+						
 			</div>
 		</div>
 	</section>			
 	<!-- onlineSPARC -->
 	<!-- skipped 23,24,25 pages -->
 	<%@ include file="footer.jsp"%>
-	<%@ include file="footer.jsp"%>
+	<%@ include file="footer1.jsp"%>
 	<script src="../js/lesson4lds/validations.js" type="text/javascript">
 		
 	</script>

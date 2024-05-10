@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online LPK12 Course</title>
+    <!-- BootStrap 5 CDN Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="../static/global.js"></script>
+    <!-- Custom CSS link -->
+ 
+    
+    <style>
+        .disabled-link{
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+             .scrollableDiv{
+            height: 600px;
+            overflow-y:auto;
+            overflow-x:hidden;
+            padding-top: 10px;
+            padding-bottom: 10px;
+     }
+     
+     .disabled{
+        display: none;
+     }
+    </style>
+</head>
+<body>
+ 
+    <section class="wrapper">
+        <div class="row container">
+            <div class="col-4" style="margin-top: 10rem;">
+                <img src="../images/education.png" class="img-fluid"/>
+            </div>
+            <div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center ms-auto scrollableDiv" style="margin-top: 5rem; height:auto;">
+                      <form class="rounded bg-white shadow p-5" id="form" method="post" >
+                      <h3 class="text-dark fw-bolder fs-4 mb-2">Forgot Password?</h3>
+                      <div class="fw-normal text-muted mb-4">
+                        We can help you out!
+                    </div>
+                    
+                    <!-- emailId label and placeholder -->
+                    
+        <div class="form-floating">
+            <input type="email" id="email" class="form-control" placeholder="emailID">
+            <label for="email">Email ID</label>
+        </div>
+        
+    <br>
+    <button id="generateOTP" type="button" class="btn btn-warning" style= "float: left" >Generate OTP</button>
+    <br><br>
+    <div class="form-floating">
+            <input type="text" class="form-control" id="otp" placeholder="New Password">
+            <label for="otp" style="float : left" >Enter OTP</label>
+        </div>
+    
+<br>
+             <div>
+             <button  id="verifyOTP" type="button" class="btn btn-primary" style="min-width : 250px" >Verify OTP</button>
+            </div>
+            <br>
+            <br><a href="login.html">Return to Login</a>  <br>
+</form>
+ 
+            </div>
+        </div>
+    </section>
+ 
+   
+  <!-- Script Section -->
+<script type="text/javascript">
+    document.getElementById("generateOTP").addEventListener("click", function () {
+        var email = document.getElementById("email").value;
+            const logicOTPAPI = dotnet_endpoint + "api/User/SendOTP?emailId=" + email ;
+             fetch(logicOTPAPI, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(function (response) {
+                var resp = response.json();
+                console.log(resp);
+                console.log(response.status);
+                if (response.status === 200) {
+                    resp.then((data) => {
+                        alert("OTP Sent!");
+                        sessionStorage.setItem("username", data.username);
+                        sessionStorage.setItem("generated_otp", data.otp);
+                      
+                    });
+                } else {
+                     
+                    if (response.status === 500) {
+                            alert('User is invalid or failed to send OTP. Please try again later.');
+                    } else if (response.status === 404) {
+                        resp.then((data) => {
+                            alert('Error occurred while fetching the data.');
+                        });
+                    } else if (response.status === 400) {
+                         alert(data.message);
+                    }
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('User is invalid or failed to send OTP. Please try again later.');
+            });
+    });
+    
+    document.getElementById("verifyOTP").addEventListener("click", function () {
+        var enteredOTP = document.getElementById("otp").value;
+        var generatedOTP = sessionStorage.getItem("generated_otp");
+ 
+        if (enteredOTP === generatedOTP) {
+            alert("OTP verification successful!");
+            location.href='ChangePassword.html';
+            // Perform further actions such as redirecting to a new page or resetting the password
+        } else {
+            alert("Invalid OTP! Please try again.");
+        }
+    });
+</script>
+ 
+<!-- Define the errorMessage element -->
+<div id="errorMessage" style="display: none;"></div>
+   
+ 
+</body>
+</html>

@@ -11,7 +11,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="../static/global.js"></script>
- <script src="../js/verifytoken.js" type="text/javascript"></script>
+
 
 <style>
 .table-styled {
@@ -22,6 +22,7 @@ border-collapse: collapse
 <title>Student Details</title>
 </head>
 <body>
+<jsp:include page ="authRoutes.jsp" />
 <jsp:include page="header.jsp"/>
 <div id="student-progress-table" style="width:80%;margin:2% 10%">
 
@@ -33,9 +34,9 @@ border-collapse: collapse
 <script type="text/javascript">
 
 $(function(){
-	verifytoken();
 	getApiData();
 });
+
 
 function getApiData()
 {

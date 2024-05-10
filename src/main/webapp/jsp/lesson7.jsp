@@ -8,13 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-	 <script src="../js/verifytoken.js" type="text/javascript">  </script>
-	 <link rel="stylesheet" href="../styles/lesson2.css">
-<script type="text/javascript">
-$(function(){
-    verifytoken();
-});
-</script>
+	 
     <link rel="stylesheet" href="../styles/style.css">
     <script src="../js/lessonDataStructureJSON.js"></script>
     <script src="../js/script.js"></script>  
@@ -63,7 +57,7 @@ $(function(){
             width: 100px;
         }
          .row {
-    border-radius: 10px; /* Rounded corners */
+    border-radius: 10px; }/* Rounded corners */
     
    
    .lesson-list {
@@ -74,15 +68,66 @@ $(function(){
     padding-left: 20px; /* Add some padding to the sub-points for hierarchy */
 }
    
-   justify-content {
-    text-align: justify;
-    /* Ensuring that the last line is not justified but left-aligned */
- text-align-last: left;
- letter-spacing: 0.5px;  /* Adjust as needed */
-    word-spacing: 1px;
-}
-}
-}   
+   
+.slide-container {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .slide-buttons {
+        flex: 0 0 auto;
+    }
+
+    .pages {
+        flex: 1 1 auto;
+        margin-left: 20px; /* Adjust the margin as needed */
+    }
+
+    /* Additional styling for vertical slides */
+    .vertical-slide {
+        margin-bottom: 20px; /* Adjust the margin between slides */
+    }
+          .lesson-nav {
+        float: left;
+        width: 20%; /* Adjust width as needed */
+        padding: 20px;
+      }
+
+      .slide-btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #337ab7; /* Bootstrap primary color */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .slide-btn:hover {
+        background-color: #286090; /* Darker shade of primary color */
+      }
+
+      /* Styles for lesson slides */
+      .lesson-slides {
+        float: left;
+        width: 80%; /* Adjust width as needed */
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .lesson-slides section {
+        display: none;
+      }
+
+      /* Show the first slide initially */
+      .lesson-slides section:first-child {
+        display: block;
+      }
+   
     </style>
 
 </head>
@@ -91,6 +136,17 @@ $(function(){
 
 <body>
     <script type="text/javascript"> 
+    function gotoPage(pageId) {
+        // Hide all pages
+        var allPages = document.querySelectorAll('.pages .vertical-slide');
+        allPages.forEach(function(page) {
+            page.hidden = true;
+        });
+
+        // Show the selected page
+        var selectedPage = document.getElementById(pageId);
+        selectedPage.hidden = false;
+    }
         $( document ).ready(function() { 
             sessionStorage.removeItem(sessionKeyIsAssessmentPassed);
             sessionStorage.removeItem(sessionKeyIsSparcPassed);
@@ -108,6 +164,7 @@ $(function(){
   		}           
     });    
     </script>
+    <%@ include file = "authRoutes.jsp" %>
 	<%@ include file = "header1.jsp" %>
   <!--  <section id="version-1-course-x-lesson-7-page-1" class="container" hidden>
         <div class="row">
@@ -119,17 +176,43 @@ $(function(){
             </div>
         </div>
     </section> -->
-    <section id="version-1-course-x-lesson-7-page-1" hidden>
+    <div class="slide-container">
+    <div class="col-md-3 lesson-nav">
+        <!-- Slide buttons here -->
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-1">Slide 1</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-2">Slide 2</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-3">Slide 3</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-4">Slide 4</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-7">Slide 5</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-8">Slide 6</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-9">Slide 7</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-12">Slide 8</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-13">Slide 9</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-14">Slide 10</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-15">Slide 11</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-16">Slide 12</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-17">Slide 13</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-20">Slide 14</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-21">Slide 15</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-22">Slide 16</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-23">Slide 17</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-24">Slide 18</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-7-page-27">Slide 19</button>
+   
+        <!-- Add more slide buttons as needed -->  
+    </div>
+    <div class="col-md-9 pages ">
+    <section id="version-1-course-x-lesson-7-page-1" class="vertical-slide" hidden>
         <div class="row">
             <div class="container" >
             <h2 style="text-align:center">  Lesson7:  </h2> <br>
             <h2 style="text-align:center">  Model Proton Numbers </h2>
-            <button class="btn btn-primary btn-lg mx-auto pull-right" onclick="gotoNext(7, 0, 'version-1-course-x-lesson-7-page-1', false, -1)" style="display:flex; margin-top:50px;"> <p style="width:100%; text-align:center;margin:0">Next </p> </button>
+            <!-- <button class="btn btn-primary btn-lg mx-auto pull-right" onclick="gotoNext(7, 0, 'version-1-course-x-lesson-7-page-1', false, -1)">next </button>-->
             </div>
         </div>
     </section>
     
-    <section id="version-1-course-x-lesson-7-page-2"  hidden>
+    <section id="version-1-course-x-lesson-7-page-2" class="vertical-slide" hidden>
         <div class="row">
         <div class="container" >
             
@@ -141,8 +224,8 @@ $(function(){
 					<li>Model proton numbers</li>
                 </ul>
                 <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 0, 'version-1-course-x-lesson-7-page-2', false, -1)">Previous</button>
-        			<button class="btn btn-primary" onclick="gotoNext(7, 0, 'version-1-course-x-lesson-7-page-2', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 0, 'version-1-course-x-lesson-7-page-2', false, -1)">Previous</button>
+        			<button class="btn btn-primary" onclick="gotoNext(7, 0, 'version-1-course-x-lesson-7-page-2', false, -1)">Next</button>-->
     			</div>
                 <!-- <a class="btn btn-primary pull-left"
                     onclick="gotoPrevious(7, 0, 'version-1-course-x-lesson-7-page-2', false, -1)"> Previous
@@ -154,7 +237,7 @@ $(function(){
         </div>
     </section>
     
-    <section id="version-1-course-x-lesson-7-page-3"  hidden>
+    <section id="version-1-course-x-lesson-7-page-3" class="vertical-slide" hidden>
         <div class="row">
          <div class="container" >
             
@@ -184,8 +267,8 @@ $(function(){
                 
                 <br>
                  <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 0, 'version-1-course-x-lesson-7-page-3', false, -1)">Previous</button>
-        			<button class="btn btn-primary" id="nextButton" style="background-color:#1b84f5;" onclick="gotoNext(7, 0, 'version-1-course-x-lesson-7-page-3', false, -1)" >Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 0, 'version-1-course-x-lesson-7-page-3', false, -1)">Previous</button>
+        			<button class="btn btn-primary" id="nextButton" style="background-color:#1b84f5;" onclick="gotoNext(7, 0, 'version-1-course-x-lesson-7-page-3', false, -1)" >Next</button>-->
     			</div>
                <!--  <a class="btn btn-primary pull-left"
                     onclick="gotoPrevious(7, 0, 'version-1-course-x-lesson-7-page-3', false, -1)"> Previous
@@ -200,7 +283,7 @@ $(function(){
 
     
     <!-- Lesson 7 assement 0 - program 0 -->
-	<section id="version-1-course-x-lesson-7-page-4"  hidden>
+	<section id="version-1-course-x-lesson-7-page-4" class="vertical-slide" hidden>
         <div class="row">
         <div class="container" >
            
@@ -217,13 +300,13 @@ $(function(){
                     <textarea id="program0" name="program0" rows="4" cols="50" class="knowledge-check-input"></textarea>
                     <br><br>
                     <br>
-                    <a class="btn btn-primary pull-left"
-                    onclick="gotoPrevious(7, 0, 'version-1-course-x-lesson-7-page-4', false, -1)"> Previous </a>
+                    <!-- <a class="btn btn-primary pull-left"
+                    onclick="gotoPrevious(7, 0, 'version-1-course-x-lesson-7-page-4', false, -1)"> Previous </a>-->
                     <div class="text-center">
-                        <a class="btn btn-primary" style="margin-left: -15rem;" onclick="submitAssessment('version-1-course-x-lesson-7-page-4', 'program0')"> Submit </a>
+                        <a class="btn btn-primary" style="margin-left: -15rem;" onclick="submitAssessment('version-1-course-x-lesson-7-page-4', 'program0')"> Program0 </a>
                     </div>
-                    <a class="btn btn-primary pull-right"  style="margin: -35px; margin-right: 76px; background-color: lightcoral;"
-	                    onclick="gotoNext(7, 0, 'version-1-course-x-lesson-7-page-4', false, -1)">Skip Pre-Assessment</a>
+                    <!-- <a class="btn btn-primary pull-right"  style="margin: -35px; margin-right: 76px; background-color: lightcoral;"
+	                    onclick="gotoNext(7, 0, 'version-1-course-x-lesson-7-page-4', false, -1)">Skip Pre-Assessment</a>-->
                 </form>
             </div>
         </div>
@@ -232,7 +315,7 @@ $(function(){
 	<!-- skipped 5,6 pages -->
 	
 	<!-- learning outcome 1 -->
-    <section id="version-1-course-x-lesson-7-page-7"  hidden>
+    <section id="version-1-course-x-lesson-7-page-7"  class="vertical-slide" hidden>
         <div class="row" >
             <div class="container" >
             <div class="justify-content">
@@ -262,14 +345,13 @@ $(function(){
             <a class="btn btn-primary pull-right"
                 onclick="gotoNext(7, 1, 'version-1-course-x-lesson-7-page-7', false, -1)"> Next </a> -->
                <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 1, 'version-1-course-x-lesson-7-page-7', false, -1)">Previous</button>
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 1, 'version-1-course-x-lesson-7-page-7', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 1, 'version-1-course-x-lesson-7-page-7', false, -1)">Previous</button>
+        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 1, 'version-1-course-x-lesson-7-page-7', false, -1)">Next</button>-->
     			</div>
             </div>
         </div>  
     </section>
-	<section id="version-1-course-x-lesson-7-page-8" 
-		hidden>
+	<section id="version-1-course-x-lesson-7-page-8" class="vertical-slide" hidden>
 		<div class="row">
 			<div class="container" >
 				<h2>Learning outcome 1 : Relations</h2>
@@ -311,14 +393,14 @@ $(function(){
 					onclick="gotoNext(7, 1, 'version-1-course-x-lesson-7-page-8', false, -1)">
 					Next </a> -->
 					 <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 1, 'version-1-course-x-lesson-7-page-8', false, -1)">Previous</button>
-        			<button class="btn btn-primary"  id="yBoxNextButton" style="background-color:#1b84f5;" onclick="gotoNext(7, 1, 'version-1-course-x-lesson-7-page-8', false, -1)" disabled>Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 1, 'version-1-course-x-lesson-7-page-8', false, -1)">Previous</button>
+        			<button class="btn btn-primary"  id="yBoxNextButton" style="background-color:#1b84f5;" onclick="gotoNext(7, 1, 'version-1-course-x-lesson-7-page-8', false, -1)" disabled>Next</button>-->
     			</div>
 			</div>
 		</div>
 	</section>
 	<!-- Lesson 7 assement 1 - program 1 -->
-	<section id="version-1-course-x-lesson-7-page-9"  hidden>
+	<section id="version-1-course-x-lesson-7-page-9"  class="vertical-slide" hidden>
         <div class="row">
         <div class="container" >
            
@@ -335,20 +417,16 @@ $(function(){
                     <textarea id="program1" name="program1" rows="4" cols="50" class="knowledge-check-input"></textarea>
                     <br><br>
                     <br>
-                    <a class="btn btn-primary pull-left"
-                    onclick="gotoPrevious(7, 1, 'version-1-course-x-lesson-7-page-9', false, -1)"> Previous </a>
+                    <!-- <a class="btn btn-primary pull-left"
+                    onclick="gotoPrevious(7, 1, 'version-1-course-x-lesson-7-page-9', false, -1)"> Previous </a>-->
                     <div class="text-center">
-                        <a class="btn btn-primary" style="margin-left: -15rem;" onclick="submitAssessment('version-1-course-x-lesson-7-page-9', 'program1')"> Submit </a>
+                        <a class="btn btn-primary" style="margin-left: -15rem;" onclick="submitAssessment('version-1-course-x-lesson-7-page-9', 'program1')"> Program1 </a>
                     </div>
                 </form>
             </div>
         </div>
     </section>
-	<!-- onlineSPARC -->
-	<!-- skipped 10,11 pages -->
-	
-	<!-- learning outcome 2 -->
-    <section id="version-1-course-x-lesson-7-page-12"  hidden>
+    <section id="version-1-course-x-lesson-7-page-12" class="vertical-slide" hidden>
         <div class="row">
         <div class="container" >
            
@@ -372,14 +450,14 @@ $(function(){
             <a class="btn btn-primary pull-right"
                 onclick="gotoNext(7, 2, 'version-1-course-x-lesson-7-page-12', false, -1)"> Next </a> -->
                  <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 2, 'version-1-course-x-lesson-7-page-12', false, -1)">Previous</button>
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 2, 'version-1-course-x-lesson-7-page-12', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 2, 'version-1-course-x-lesson-7-page-12', false, -1)">Previous</button>
+        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 2, 'version-1-course-x-lesson-7-page-12', false, -1)">Next</button>-->
     			</div>
                 
             </div>
         </div>  
     </section>
-    <section id="version-1-course-x-lesson-7-page-13"  hidden>
+    <section id="version-1-course-x-lesson-7-page-13" class="vertical-slide" hidden>
         <div class="row">
         <div class="container" >
            
@@ -398,13 +476,13 @@ $(function(){
             <a class="btn btn-primary pull-right"
                 onclick="gotoNext(7, 2, 'version-1-course-x-lesson-7-page-13', false, -1)"> Next </a> -->
                  <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 2, 'version-1-course-x-lesson-7-page-13', false, -1)">Previous</button>
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 2, 'version-1-course-x-lesson-7-page-13', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 2, 'version-1-course-x-lesson-7-page-13', false, -1)">Previous</button>
+        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 2, 'version-1-course-x-lesson-7-page-13', false, -1)">Next</button>-->
     			</div>
             </div>
         </div>  
     </section>
-    <section id="version-1-course-x-lesson-7-page-14"  hidden>
+    <section id="version-1-course-x-lesson-7-page-14" class="vertical-slide" hidden>
         <div class="row">
         <div class="container" >
             
@@ -416,13 +494,13 @@ $(function(){
             <a class="btn btn-primary pull-right"
                 onclick="gotoNext(7, 2, 'version-1-course-x-lesson-7-page-14', false, -1)"> Next </a> -->
               <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 2, 'version-1-course-x-lesson-7-page-14', false, -1)">Previous</button>
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 2, 'version-1-course-x-lesson-7-page-14', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 2, 'version-1-course-x-lesson-7-page-14', false, -1)">Previous</button>
+        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 2, 'version-1-course-x-lesson-7-page-14', false, -1)">Next</button>-->
     			</div>
             </div>
         </div>  
     </section>
-    <section id="version-1-course-x-lesson-7-page-15"  hidden>
+    <section id="version-1-course-x-lesson-7-page-15" class="vertical-slide" hidden>
         <div class="row">
         <div class="container" >
             
@@ -434,13 +512,13 @@ $(function(){
             <a class="btn btn-primary pull-right"
                 onclick="gotoNext(7, 2, 'version-1-course-x-lesson-7-page-15', false, -1)"> Next </a> -->
               <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 2, 'version-1-course-x-lesson-7-page-15', false, -1)">Previous</button>
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 2, 'version-1-course-x-lesson-7-page-15', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 2, 'version-1-course-x-lesson-7-page-15', false, -1)">Previous</button>
+        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 2, 'version-1-course-x-lesson-7-page-15', false, -1)">Next</button>-->
     			</div>
             </div>
         </div>  
     </section>
-    <section id="version-1-course-x-lesson-7-page-16" hidden>
+    <section id="version-1-course-x-lesson-7-page-16"class="vertical-slide"  hidden>
         <div class="row">
             <div class="container" >
             <h2>Learning outcome 2</h2>
@@ -475,14 +553,14 @@ $(function(){
             <a class="btn btn-primary pull-right"
                 onclick="gotoNext(7, 2, 'version-1-course-x-lesson-7-page-16', false, -1)"> Next </a> -->
                 <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 2, 'version-1-course-x-lesson-7-page-16', false, -1)">Previous</button>
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 2, 'version-1-course-x-lesson-7-page-16', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 2, 'version-1-course-x-lesson-7-page-16', false, -1)">Previous</button>
+        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 2, 'version-1-course-x-lesson-7-page-16', false, -1)">Next</button>-->
     			</div>
             </div>
         </div>  
     </section>
      <!-- Lesson 7 assement 2 - program 2 -->
-	<section id="version-1-course-x-lesson-7-page-17"  hidden>
+	<section id="version-1-course-x-lesson-7-page-17" class="vertical-slide" hidden>
         <div class="row">
         <div class="container" >
            
@@ -499,20 +577,16 @@ $(function(){
                     <textarea id="program2" name="program2" rows="4" cols="50" class="knowledge-check-input"></textarea>
                     <br><br>
                     <br>
-                    <a class="btn btn-primary pull-left"
-                    onclick="gotoPrevious(7, 2, 'version-1-course-x-lesson-7-page-17', false, -1)"> Previous </a>
+                    <!-- <a class="btn btn-primary pull-left"
+                    onclick="gotoPrevious(7, 2, 'version-1-course-x-lesson-7-page-17', false, -1)"> Previous </a>-->
                     <div class="text-center">
-                        <a class="btn btn-primary" style="margin-left: -15rem;" onclick="submitAssessment('version-1-course-x-lesson-7-page-17', 'program2')"> Submit </a>
+                        <a class="btn btn-primary" style="margin-left: -15rem;" onclick="submitAssessment('version-1-course-x-lesson-7-page-17', 'program2')"> Program2 </a>
                     </div>
                 </form>
             </div>
         </div>
     </section>
-    <!-- onlineSPARC -->
-	<!-- skipped 18,19 pages -->
-    
-    <!-- learning outcome 3 -->
-    <section id="version-1-course-x-lesson-7-page-20"  hidden>
+    <section id="version-1-course-x-lesson-7-page-20" class="vertical-slide" hidden>
         <div class="row">
         <div class="container" >
          
@@ -539,13 +613,13 @@ $(function(){
             <a class="btn btn-primary pull-right"
                 onclick="gotoNext(7, 3, 'version-1-course-x-lesson-7-page-20', false, -1)"> Next </a> -->
               <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 3, 'version-1-course-x-lesson-7-page-20', false, -1)">Previous</button>
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 3, 'version-1-course-x-lesson-7-page-20', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 3, 'version-1-course-x-lesson-7-page-20', false, -1)">Previous</button>
+        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 3, 'version-1-course-x-lesson-7-page-20', false, -1)">Next</button>-->
     			</div>
             </div>
         </div>  
     </section>
-    <section id="version-1-course-x-lesson-7-page-21" hidden>
+    <section id="version-1-course-x-lesson-7-page-21" class="vertical-slide" hidden>
         <div class="row">
         <div class="container" >
            
@@ -563,13 +637,13 @@ $(function(){
             <a class="btn btn-primary pull-right"
                 onclick="gotoNext(7, 3, 'version-1-course-x-lesson-7-page-21', false, -1)"> Next </a> -->
                <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 3, 'version-1-course-x-lesson-7-page-21', false, -1)">Previous</button>
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 3, 'version-1-course-x-lesson-7-page-21', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 3, 'version-1-course-x-lesson-7-page-21', false, -1)">Previous</button>
+        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 3, 'version-1-course-x-lesson-7-page-21', false, -1)">Next</button>-->
     			</div>
             </div>
         </div>  
     </section>
-    <section id="version-1-course-x-lesson-7-page-22"  hidden>
+    <section id="version-1-course-x-lesson-7-page-22" class="vertical-slide" hidden>
         <div class="row">
         <div class="container" >
            
@@ -581,13 +655,13 @@ $(function(){
             <a class="btn btn-primary pull-right"
                 onclick="gotoNext(7, 3, 'version-1-course-x-lesson-7-page-22', false, -1)"> Next </a> -->
             <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 3, 'version-1-course-x-lesson-7-page-22', false, -1)">Previous</button>
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 3, 'version-1-course-x-lesson-7-page-22', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 3, 'version-1-course-x-lesson-7-page-22', false, -1)">Previous</button>
+        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 3, 'version-1-course-x-lesson-7-page-22', false, -1)">Next</button>-->
     			</div>
             </div>
         </div>  
     </section>
-    <section id="version-1-course-x-lesson-7-page-23"  hidden>
+    <section id="version-1-course-x-lesson-7-page-23" class="vertical-slide" hidden>
         <div class="row">
            <div class="container" >
             <h2>Learning outcome 3</h2>
@@ -618,15 +692,15 @@ $(function(){
             <a class="btn btn-primary pull-right"
                 onclick="gotoNext(7, 3, 'version-1-course-x-lesson-7-page-23', false, -1)"> Next </a> -->
               <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 3, 'version-1-course-x-lesson-7-page-23', false, -1)">Previous</button>
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 3, 'version-1-course-x-lesson-7-page-23', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 3, 'version-1-course-x-lesson-7-page-23', false, -1)">Previous</button>
+        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 3, 'version-1-course-x-lesson-7-page-23', false, -1)">Next</button>-->
     			</div>
             </div>
         </div>  
     </section>
     
 	<!-- learning outcome 3 program 3--->
-	<section id="version-1-course-x-lesson-7-page-24"  hidden>
+	<section id="version-1-course-x-lesson-7-page-24" class="vertical-slide" hidden>
 	    <div class="row">
 	        <div class="container" >
 	            <form action="">
@@ -642,20 +716,17 @@ $(function(){
 	                <textarea id="program3" name="program3" rows="4" cols="50" class="knowledge-check-input"></textarea>
 	                <br><br>
 	                <br>
-	                <a class="btn btn-primary pull-left"
-	                onclick="gotoPrevious(7, 3, 'version-1-course-x-lesson-7-page-24', false, -1)"> Previous </a>
+	                <!-- <a class="btn btn-primary pull-left"
+	                onclick="gotoPrevious(7, 3, 'version-1-course-x-lesson-7-page-24', false, -1)"> Previous </a>-->
 	                <div class="text-center">
-	                    <a class="btn btn-primary" style="margin-left: -15rem;" onclick="submitAssessment('version-1-course-x-lesson-7-page-24', 'program3')"> Submit </a>
+	                    <a class="btn btn-primary" style="margin-left: -15rem;" onclick="submitAssessment('version-1-course-x-lesson-7-page-24', 'program3')"> Program3 </a>
 	                </div>
 	            </form>
 	        </div>
 	    </div>
 	
 	</section>
-	<!-- onlineSPARC -->
-	<!-- skipped 25,26 pages -->
-	<!-- #learning outcome 4 -->
-	 <section id="version-1-course-x-lesson-7-page-27"  hidden>
+	<section id="version-1-course-x-lesson-7-page-27" class="vertical-slide" hidden>
         <div class="row">
            <div class="container" >
             <h2>Learning outcome 4</h2>
@@ -685,12 +756,30 @@ $(function(){
             <a class="btn btn-primary pull-right"
                 onclick="gotoNext(7, 4, 'version-1-course-x-lesson-7-page-27', false, -1)"> Next </a> -->
               <div class="d-flex justify-content-between">
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 4, 'version-1-course-x-lesson-7-page-27', false, -1)">Previous</button>
-        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 4, 'version-1-course-x-lesson-7-page-27', false, -1)">Next</button>
+        			<!-- <button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoPrevious(7, 4, 'version-1-course-x-lesson-7-page-27', false, -1)">Previous</button>
+        			<button class="btn btn-primary" style="background-color:#1b84f5;" onclick="gotoNext(7, 4, 'version-1-course-x-lesson-7-page-27', false, -1)">Next</button>-->
     			</div>
             </div>
         </div>  
     </section>
+    </div>
+    </div>
+    	
+    
+	<!-- onlineSPARC -->
+	<!-- skipped 10,11 pages -->
+	
+	<!-- learning outcome 2 -->
+    
+    <!-- onlineSPARC -->
+	<!-- skipped 18,19 pages -->
+    
+    <!-- learning outcome 3 -->
+    
+	<!-- onlineSPARC -->
+	<!-- skipped 25,26 pages -->
+	<!-- #learning outcome 4 -->
+	 
    <!-- <section id="version-1-course-x-lesson-7-page-28"  hidden>
         <div class="row">
            <div class="container" >

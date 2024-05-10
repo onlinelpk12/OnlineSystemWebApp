@@ -1,4 +1,4 @@
-	const corsProxy = "https://onlinelpk12-corsproxy.herokuapp.com/";
+	//const corsProxy = "https://onlinelpk12-corsproxy.herokuapp.com/";
 	function verifytoken(){
 
 	if(sessionStorage.getItem("userRole")=="Student"){

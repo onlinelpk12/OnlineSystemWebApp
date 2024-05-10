@@ -53,7 +53,7 @@
 </style>
 </head>
 <body>
-
+<%@ include file ="authRoutes.jsp" %>
 <div id="wrapper" class="toggled">
 	<div id="wrap">
 		<div id="navbar">

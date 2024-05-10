@@ -8,13 +8,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-	<script src="../js/verifytoken.js" type="text/javascript">  </script>
+
 	<link rel="stylesheet" href="../styles/lesson6.css">
-<script type="text/javascript">
-$(function(){
-    verifytoken();
-});
-</script>
+
     <link rel="stylesheet" href="../styles/style.css">
     <script src="../js/lessonDataStructureJSON.js"></script>
     <script src="../js/script.js"></script>  
@@ -71,12 +67,67 @@ $(function(){
     padding-left: 20px; /* Add some padding to the sub-points for hierarchy */
 }
    
-}   
+}
+.slide-buttons{
+            float: left;
+            width: 20%; /* Adjust width as needed */
+            padding: 20px;
+        }   
+          .lesson-nav {
+        float: left;
+        width: 20%; /* Adjust width as needed */
+        padding: 20px;
+      }
+
+      .slide-btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #337ab7; /* Bootstrap primary color */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .slide-btn:hover {
+        background-color: #286090; /* Darker shade of primary color */
+      }
+
+      /* Styles for lesson slides */
+      .lesson-slides {
+        float: left;
+        width: 80%; /* Adjust width as needed */
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .lesson-slides section {
+        display: none;
+      }
+
+      /* Show the first slide initially */
+      .lesson-slides section:first-child {
+        display: block;
+      }
     </style>  
 </head>
 
 <body>
     <script type="text/javascript"> 
+    function gotoPage(pageId) {
+        // Hide all pages
+        var allPages = document.querySelectorAll('.pages section');
+        allPages.forEach(function(page) {
+            page.hidden = true;
+        });
+
+        // Show the selected page
+        var selectedPage = document.getElementById(pageId);
+        selectedPage.hidden = false;
+    }
         $( document ).ready(function() { 
             sessionStorage.removeItem(sessionKeyIsAssessmentPassed);
             sessionStorage.removeItem(sessionKeyIsSparcPassed);
@@ -94,13 +145,35 @@ $(function(){
   		}           
     });    
     </script>
+    <%@ include file = "authRoutes.jsp" %>
 	<%@ include file = "header1.jsp" %>
+	<div class="lesson-nav">
+        <!-- Slide buttons here -->
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-6-page-1">Slide 1</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-6-page-2">Slide 2</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-6-page-3">Slide 3</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-6-page-4">Slide 4</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-6-page-5">Slide 5</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-6-page-6">Slide 6</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-6-page-7">Slide 7</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-6-page-8">Slide 8</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-6-page-9">Slide 9</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-6-page-10">Slide 10</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-6-page-13">Slide 11</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-6-page-14">Slide 12</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-6-page-17">Slide 13</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-6-page-18">Slide 14</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-6-page-21">Slide 15</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-6-page-22">Slide 16</button>
+        <!-- Add more slide buttons as needed -->  
+    </div>
+    <div class="col-md-9 pages">
     <section id="version-1-course-x-lesson-6-page-1" hidden>
         <div class="row">
         <div class="container">
             <h1 style="text-align:center">  Lesson 6: Model periodic table - Atomic Number </h1> <br>
-            <button class="btn btn-primary pull-right" style="background-color :#1b84f5;"
-                onclick="gotoNext(6, 0, 'version-1-course-x-lesson-6-page-1', false, -1)"> Next </button>
+            <!-- <button class="btn btn-primary pull-right" style="background-color :#1b84f5;"
+                onclick="gotoNext(6, 0, 'version-1-course-x-lesson-6-page-1', false, -1)"> Next </button>-->
             </div>
         </div>
     </section>
@@ -113,12 +186,12 @@ $(function(){
                     <li class="main-point">Atomic structure</li>                    
 					<li class="main-point">Model atomic number</li>
                 </ul>
-                <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
+                <!-- <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
                     onclick="gotoPrevious(6, 0, 'version-1-course-x-lesson-6-page-2', false, -1)"> Previous
                 </button>
                 <button class="btn btn-primary pull-right" style="background-color :#1b84f5;"
                     onclick="gotoNext(6, 0, 'version-1-course-x-lesson-6-page-2', false, -1)"> Next 
-                </button>
+                </button>-->
             </div>
         </div>
     </section>
@@ -141,15 +214,14 @@ $(function(){
            			<img  class = "atomGif" src="../images/lesson6/image003.gif" align="middle" alt="Image" width="105" height="90" >
            		</div>
            		<br>
-                <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
+                <!-- <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
                     onclick="gotoPrevious(6, 0, 'version-1-course-x-lesson-6-page-3', false, -1)"> Previous
                 </button>
                 <button class="btn btn-primary pull-right" style="background-color :#1b84f5;"
-                    onclick="gotoNext(6, 0, 'version-1-course-x-lesson-6-page-3', false, -1)"> Next
+                    onclick="gotoNext(6, 0, 'version-1-course-x-lesson-6-page-3', false, -1)"> Next-->
                 </button>
             </div>
             </div>
-        </div>
     </section>
     
     <section id="version-1-course-x-lesson-6-page-4" hidden>
@@ -176,15 +248,14 @@ $(function(){
            			</div>       
                 <br><br><br><br>
                 <br><br><br><br><br>
-                <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
+                <!-- <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
                     onclick="gotoPrevious(6, 0, 'version-1-course-x-lesson-6-page-4', false, -1)"> Previous
                 </button>
                 <button class="btn btn-primary pull-right" style="background-color :#1b84f5;"
                     onclick="gotoNext(6, 0, 'version-1-course-x-lesson-6-page-4', false, -1)"> Next
-                </button>  
+                </button>-->  
                 </div>  
             </div>
-        </div>
     </section>
     
     <section id="version-1-course-x-lesson-6-page-5" hidden>
@@ -205,15 +276,14 @@ $(function(){
                              
                 <br><br><br><br>
                 <br><br><br><br><br>
-                <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
+                <!-- <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
                     onclick="gotoPrevious(6, 0, 'version-1-course-x-lesson-6-page-5', false, -1)"> Previous
                 </button>
                 <button class="btn btn-primary pull-right" style="background-color :#1b84f5;"
                     onclick="gotoNext(6, 0, 'version-1-course-x-lesson-6-page-5', false, -1)"> Next
-                </button>
+                </button>-->
                 </div>
             </div>
-        </div>
     </section>
     
     <section id="version-1-course-x-lesson-6-page-6" hidden>
@@ -234,15 +304,14 @@ $(function(){
                                
                 <br><br><br><br>
                 <br><br><br><br><br>
-                <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
+                <!-- <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
                     onclick="gotoPrevious(6, 0, 'version-1-course-x-lesson-6-page-6', false, -1)"> Previous
                 </button>
                 <button class="btn btn-primary pull-right" style="background-color :#1b84f5;"
                     onclick="gotoNext(6, 0, 'version-1-course-x-lesson-6-page-6', false, -1)"> Next
-                </button>
+                </button>-->
                 </div>
             </div>
-        </div>
     </section>
     
     <section id="version-1-course-x-lesson-6-page-7" hidden>
@@ -262,15 +331,14 @@ $(function(){
                         
                 <br><br><br><br>
                 <br><br><br><br><br>
-                <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
+                <!-- <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
                     onclick="gotoPrevious(6, 0, 'version-1-course-x-lesson-6-page-7', false, -1)"> Previous
                 </button>
                 <button class="btn btn-primary pull-right" style="background-color :#1b84f5;"
                     onclick="gotoNext(6, 0, 'version-1-course-x-lesson-6-page-7', false, -1)"> Next
-                </button>
+                </button>-->
                 </div>
             </div>
-        </div>
     </section>
     
     <section id="version-1-course-x-lesson-6-page-8" hidden>
@@ -289,49 +357,42 @@ $(function(){
            	
                 <br><br><br><br>
                 <br><br><br><br><br>
-                <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
+               <!--  <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
                     onclick="gotoPrevious(6, 0, 'version-1-course-x-lesson-6-page-8', false, -1)"> Previous
                 </button>
                 <button class="btn btn-primary pull-right" style="background-color :#1b84f5;"
                     onclick="gotoNext(6, 0, 'version-1-course-x-lesson-6-page-8', false, -1)"> Next
-                </button>
+                </button>-->
                 </div>
             </div>
-        </div>
+   
     </section>
-    
+    <!--  -->
+    <!-- adding periodic table -->
     <section id="version-1-course-x-lesson-6-page-9" hidden>
         <div class="row">
         <div class="container">
-            	<h2 style="text-align:center;">Atomic Number - Carbon</h2>
-            	<ul class="lesson-list">
-               		<li class="main-point">Question</li>
-               		<ul class="sub-point">
-               			<li>What is the proton number of carbon ?</li>
-               			<ul classs="main-point">
-               				<li class="sub-point">The proton number of carbon is 6 it is shown on the top of the symbol.</li>
-               			</ul>                			
-               			<li class="sub-point">What is the atomic number of carbon?</li>
-               			<ul class="main-point">
-               				<li class="sub-point">The atomic number of carbon is 6. Because the atomic number is equal to the number of protons in an element.</li>
-               			</ul>
-               		</ul>                		
-                </ul>     
-                <div style="padding-bottom:130px; padding-right:180px">
-           			<img  id = "carbon" src="../images/lesson5/carbon.png" alt="Image" width="105" height="90" >
-           		</div>
-                          
-                <br><br><br>
-                <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
+                <h2 style="text-align:center;">Periodic Table of the Elements</h2>
+           		<div>
+           		<ul class="lesson-list">
+                		<li class="sub-point">How to find an atomic number of an element from a periodic table?</li>
+                </ul>  
+           		<div style="padding-leftt: 100px;">
+           			<img  class = "atomGif" src="../images/lesson6/PeriodTable.png" align="middle" alt="Image" width="550" height="400" >
+           		</div>   
+                <br>
+                   <ol class="sub-point">Go to  <a href="https://forms.gle/H6Cfqr8ViiukEVGA6"> practise1</a></ol>
+                  <br>
+               <!--  <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
                     onclick="gotoPrevious(6, 0, 'version-1-course-x-lesson-6-page-9', false, -1)"> Previous
                 </button>
                 <button class="btn btn-primary pull-right" style="background-color :#1b84f5;"
                     onclick="gotoNext(6, 0, 'version-1-course-x-lesson-6-page-9', false, -1)"> Next
-                </button>
-                </div>
+                </button> -->  
+                </div> 
             </div>
         </div>
-    </section>
+    </section> 
     
     
     <!-- Lesson 6 assement 0 - program 0 -->
@@ -354,19 +415,15 @@ $(function(){
                     <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
                     onclick="gotoPrevious(6, 0, 'version-1-course-x-lesson-6-page-10', false, -1)"> Previous </button>
                     <div class="text-center">
-                        <button class="btn btn-primary" style="margin-left: -15rem;background-color :#1b84f5;" onclick="submitAssessment('version-1-course-x-lesson-6-page-10', 'program0')"> Submit </button>
+                       <!--  <button class="btn btn-primary" style="margin-left: -15rem;background-color :#1b84f5;" onclick="submitAssessment('version-1-course-x-lesson-6-page-10', 'program0')"> Submit </button>
                     </div>
                     <button class="btn btn-primary pull-right"  style="margin: -35px; margin-right: 76px; background-color: lightcoral;"
-	                    onclick="gotoNext(6, 0, 'version-1-course-x-lesson-6-page-10', false, -1)">Skip Pre-Assessment</button>
+	                    onclick="gotoNext(6, 0, 'version-1-course-x-lesson-6-page-10', false, -1)">Skip Pre-Assessment</button>-->
                 </form>
                 </div>
             </div>
-        </div>
+       
     </section>
-	<!-- onlineSPARC -->
-	<!-- skipped 11,12 pages -->
-	
-	<!-- learning outcome 1 -->
     <section id="version-1-course-x-lesson-6-page-13" hidden>
         <div class="row">
         <div class="container">
@@ -388,17 +445,17 @@ $(function(){
    				<img  id = "carbon" src="../images/lesson6/hydrogen.png" alt="Image" width="105" height="90" >
 			</div>
                 <br><br>   
-            <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
+           <!--  <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
                 onclick="gotoPrevious(6, 1, 'version-1-course-x-lesson-6-page-13', false, -1)"> Previous </button>
             <button class="btn btn-primary pull-right" style="background-color :#1b84f5;"
-                onclick="gotoNext(6, 1, 'version-1-course-x-lesson-6-page-13', false, -1)"> Next </button>
+                onclick="gotoNext(6, 1, 'version-1-course-x-lesson-6-page-13', false, -1)"> Next </button>-->
             </div>
             </div>
-        </div>  
+         
     </section>
     
      <!-- Lesson 6 assement 1 - program 1 -->
-	<section id="version-1-course-x-lesson-6-page-13" hidden>
+	<section id="version-1-course-x-lesson-6-page-14" hidden>
         <div class="row">
         <div class="container">
                 <h3><b>Activity : Extend Periodic Table Model -- Atomic Numbers</b></h3>
@@ -414,20 +471,16 @@ $(function(){
                     <textarea id="program1" name="program1" rows="4" cols="50" class="knowledge-check-input"></textarea>
                     <br><br>
                     <br>
-                    <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
-                    onclick="gotoPrevious(6, 1, 'version-1-course-x-lesson-6-page-12', false, -1)"> Previous </button>
+                    <!-- <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
+                    onclick="gotoPrevious(6, 1, 'version-1-course-x-lesson-6-page-12', false, -1)"> Previous </button>-->
                     <div class="text-center">
-                        <button class="btn btn-primary" style="margin-left: -15rem; background-color :#1b84f5;" onclick="submitAssessment('version-1-course-x-lesson-6-page-14', 'program1')"> Submit </button>
+                        <button class="btn btn-primary" style="margin-left: -15rem; background-color :#1b84f5;" onclick="submitAssessment('version-1-course-x-lesson-6-page-14', 'program1')"> Program1</button>
                     </div>
                 </form>
                 </div>
             </div>
-        </div>
+        
     </section>
-	<!-- onlineSPARC -->
-	<!-- skipped 15,16 pages -->
-	
-	<!-- learning outcome 2 -->
     <section id="version-1-course-x-lesson-6-page-17" hidden>
         <div class="row">
         <div class="container">
@@ -450,13 +503,13 @@ $(function(){
 			</div>
             
                 <br><br>   
-            <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
+           <!--  <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
                 onclick="gotoPrevious(6, 2, 'version-1-course-x-lesson-6-page-17', false, -1)"> Previous </button>
             <button class="btn btn-primary pull-right" style="background-color :#1b84f5;"
-                onclick="gotoNext(6, 2, 'version-1-course-x-lesson-6-page-17', false, -1)"> Next </button>
+                onclick="gotoNext(6, 2, 'version-1-course-x-lesson-6-page-17', false, -1)"> Next </button>-->
             </div>
         </div>  
-        </div>
+        
     </section>
     
      <!-- Lesson 6 assement 2 - program 2 -->
@@ -476,15 +529,15 @@ $(function(){
                     <textarea id="program2" name="program2" rows="4" cols="50" class="knowledge-check-input"></textarea>
                     <br><br>
                     <br>
-                    <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
-                    onclick="gotoPrevious(6, 2, 'version-1-course-x-lesson-6-page-18', false, -1)"> Previous </button>
+                    <!-- <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
+                    onclick="gotoPrevious(6, 2, 'version-1-course-x-lesson-6-page-18', false, -1)"> Previous </button>-->
                     <div class="text-center">
-                        <button class="btn btn-primary" style="margin-left: -15rem; background-color :#1b84f5;" onclick="submitAssessment('version-1-course-x-lesson-6-page-18', 'program2')"> Submit </button>
+                        <button class="btn btn-primary" style="margin-left: -15rem; background-color :#1b84f5;" onclick="submitAssessment('version-1-course-x-lesson-6-page-18', 'program2')"> Program2</button>
                     </div>
                 </form>
             </div>
             </div>
-        </div>
+        
     </section>
     <!-- onlineSPARC -->
 	<!-- skipped 19,20 pages -->
@@ -515,13 +568,13 @@ $(function(){
             	</p>
             </div>
             <br>
-    <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
+    <!-- <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
         onclick="gotoPrevious(6, 3, 'version-1-course-x-lesson-6-page-21', false, -1)"> Previous </button>
      <button class="btn btn-primary pull-right" style="background-color :#1b84f5;"
-        onclick="gotoNext(6, 3, 'version-1-course-x-lesson-6-page-21', false, -1)"> Next </button>
+        onclick="gotoNext(6, 3, 'version-1-course-x-lesson-6-page-21', false, -1)"> Next </button>-->
           </div>
 	      </div>
-	      </div>
+	     
 	</section>
 	
 	<!-- learning outcome 3 program 3--->
@@ -541,17 +594,27 @@ $(function(){
 	                <textarea id="program3" name="program3" rows="4" cols="50" class="knowledge-check-input"></textarea>
 	                <br><br>
 	                <br>
-	                <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
-	                onclick="gotoPrevious(6, 3, 'version-1-course-x-lesson-6-page-22', false, -1)"> Previous </button>
+	                <!-- <button class="btn btn-primary pull-left" style="background-color :#1b84f5;"
+	                onclick="gotoPrevious(6, 3, 'version-1-course-x-lesson-6-page-22', false, -1)"> Previous </button>-->
 	                <div class="text-center">
-	                    <button class="btn btn-primary" style="margin-left: -15rem; background-color :#1b84f5;" onclick="submitAssessment('version-1-course-x-lesson-6-page-22', 'program3')"> Submit </button>
+	                    <button class="btn btn-primary" style="margin-left: -15rem; background-color :#1b84f5;" onclick="submitAssessment('version-1-course-x-lesson-6-page-22', 'program3')"> Program3 </button>
 	                </div>
 	            </form>
 	        </div>
 	        </div>
-	    </div>
 	
 	</section>
+    </div>
+	<!-- onlineSPARC -->
+	<!-- skipped 11,12 pages -->
+	
+	<!-- learning outcome 1 -->
+    
+	<!-- onlineSPARC -->
+	<!-- skipped 15,16 pages -->
+	
+	<!-- learning outcome 2 -->
+    
 <%@ include file = "footer1.jsp" %>
 <script src="../js/lesson6/validations.js" type="text/javascript">  </script>
    </body>

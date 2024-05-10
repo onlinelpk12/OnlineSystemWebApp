@@ -25,6 +25,7 @@ a.disabled {
 <title>Lesson Numbers</title>
 </head>
 <body>
+	<jsp:include page ="authRoutes.jsp" />
 	<jsp:include page="header.jsp" />
 	<div id="LessonStyle" style="width: 95%; margin: 3%"></div>
 	<jsp:include page="footer.jsp" />

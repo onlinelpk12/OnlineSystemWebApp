@@ -38,6 +38,7 @@ $(function(){
   		}   */         
     });    
     </script>
+    <%@ include file = "authRoutes.jsp" %>
 	<%@ include file = "header.jsp" %>
     <section id="version-1-course-x-lesson-9-page-1" class="container">
         <div class="row">

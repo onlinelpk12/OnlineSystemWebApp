@@ -9,13 +9,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-	<script src="../js/verifytoken.js" type="text/javascript">  </script>
+	
 	 <link rel="stylesheet" href="../styles/lesson5.css">
-<script type="text/javascript">
-$(function(){
-    verifytoken();
-});
-</script>
+
     <link rel="stylesheet" href="../styles/style.css">
     <script src="../js/lessonDataStructureJSON.js"></script>
     <script src="../js/script.js"></script>   
@@ -74,11 +70,66 @@ $(function(){
 	        }
    
           }
+          .slide-buttons{
+            float: left;
+            width: 20%; /* Adjust width as needed */
+            padding: 20px;
+        }
+              .lesson-nav {
+        float: left;
+        width: 20%; /* Adjust width as needed */
+        padding: 20px;
+      }
+
+      .slide-btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #337ab7; /* Bootstrap primary color */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .slide-btn:hover {
+        background-color: #286090; /* Darker shade of primary color */
+      }
+
+      /* Styles for lesson slides */
+      .lesson-slides {
+        float: left;
+        width: 80%; /* Adjust width as needed */
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .lesson-slides section {
+        display: none;
+      }
+
+      /* Show the first slide initially */
+      .lesson-slides section:first-child {
+        display: block;
+      }
     </style> 
 </head>
 
 <body>
     <script type="text/javascript"> 
+    function gotoPage(pageId) {
+        // Hide all pages
+        var allPages = document.querySelectorAll('.pages section');
+        allPages.forEach(function(page) {
+            page.hidden = true;
+        });
+
+        // Show the selected page
+        var selectedPage = document.getElementById(pageId);
+        selectedPage.hidden = false;
+    }
         $( document ).ready(function() { 
             sessionStorage.removeItem(sessionKeyIsAssessmentPassed);
             sessionStorage.removeItem(sessionKeyIsSparcPassed);
@@ -96,14 +147,33 @@ $(function(){
   		}           
     });     
     </script>
+    <%@ include file = "authRoutes.jsp" %>
 	<%@ include file = "header1.jsp" %>
+	<div class="lesson-nav">
+        <!-- Slide buttons here -->
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-1">Slide 1</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-2">Slide 2</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-3">Slide 3</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-6">Slide 4</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-7">Slide 5</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-11">Slide 6</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-12">Slide 7</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-15">Slide 8</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-16">Slide 9</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-20">Slide 10</button>
+        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-21">Slide 11</button>
+
+
+        <!-- Add more slide buttons as needed -->  
+    </div>
+    <div class="col-md-9 pages">
     <section id="version-1-course-x-lesson-5-page-1" hidden>
         <div class="row">
             <div class="container">
             <h1 style="text-align:center">  Lesson 5: Model periodic table - chemical symbols </h1> <br>
             <div class="d-flex pull-right">
-        			<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
-        			onclick="gotoNext(5, 0, 'version-1-course-x-lesson-5-page-1', false, -1)">Next</button>
+        			<!--<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
+        			onclick="gotoNext(5, 0, 'version-1-course-x-lesson-5-page-1', false, -1)">Next</button>-->
         	</div>
             
             </div>
@@ -124,10 +194,10 @@ $(function(){
                 </ul>
                 <br>
 				<div class="d-flex justify-content-between">
-					<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
+					<!--<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
 					onclick="gotoPrevious(5, 0, 'version-1-course-x-lesson-5-page-2', false, -1)">Previous</button>
 					<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
-					onclick="gotoNext(5, 0, 'version-1-course-x-lesson-5-page-2', false, -1)">Next</button>
+					onclick="gotoNext(5, 0, 'version-1-course-x-lesson-5-page-2', false, -1)">Next</button>-->
 				</div> 
  
             </div>
@@ -152,33 +222,28 @@ $(function(){
                     <br><br>
                     <br>
                     <div id="outer">
-	                    <a class="btn btn-primary pull-left"
-	                    onclick="gotoPrevious(5, 0, 'version-1-course-x-lesson-5-page-3', false, -1)"> Previous </a>
+	                    <!--<a class="btn btn-primary pull-left"
+	                    onclick="gotoPrevious(5, 0, 'version-1-course-x-lesson-5-page-3', false, -1)"> Previous </a>-->
 	                    <div class="text-center">
-	                        <a class="btn btn-primary" style="margin-left: -15rem;" onclick="submitAssessment('version-1-course-x-lesson-5-page-3', 'program0')"> Submit </a>
+	                        <a class="btn btn-primary" style="margin-left: -15rem;" onclick="submitAssessment('version-1-course-x-lesson-5-page-3', 'program0')"> Program0 </a>
 	                    </div>
-	                     <a class="btn btn-primary pull-right"  style="margin: -35px; margin-right: 76px; background-color: lightcoral;"
-	                    onclick="gotoNext(5, 0, 'version-1-course-x-lesson-5-page-3', false, -1)">Skip Pre-Assessment</a>
+	                     <!--<a class="btn btn-primary pull-right"  style="margin: -35px; margin-right: 76px; background-color: lightcoral;"
+	                    onclick="gotoNext(5, 0, 'version-1-course-x-lesson-5-page-3', false, -1)">Skip Pre-Assessment</a>-->
                     </div>
                 </form>
             </div>
         </div>
-    </section>    
-
-    <!-- Online SPARC -->
-    <!-- skipped 4,5 pages -->
-
-    <!-- learning outcome 1 -->
+    </section> 
     <section id="version-1-course-x-lesson-5-page-6" hidden>
         <div class="row">
             <div class="container">
             <h2> Learning outcome 1</h2>
             <img src="../images/lesson5/HydrogenSlide.png" alt="Image" width="500" height="300">
 			<div class="d-flex justify-content-between">
-				<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
+				<!--<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
 				onclick="gotoPrevious(5, 1, 'version-1-course-x-lesson-5-page-6', false, -1)">Previous</button>
 				<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
-				onclick="gotoNext(5, 1, 'version-1-course-x-lesson-5-page-6', false, -1)">Next</button>
+				onclick="gotoNext(5, 1, 'version-1-course-x-lesson-5-page-6', false, -1)">Next</button>-->
 			</div> 
             </div>
         </div>  
@@ -213,15 +278,193 @@ $(function(){
                 
                 <br>
              <div class="d-flex justify-content-between">
-				<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
+				<!--<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
 				onclick="gotoPrevious(5, 1, 'version-1-course-x-lesson-5-page-7', false, -1)">Previous</button>
 				<button class="btn btn-lg btn-primary" style="background-color:#1b84f5" id="kNextBtn"
-				onclick="gotoNext(5, 1, 'version-1-course-x-lesson-5-page-7', false, -1)" disabled>Next</button>
+				onclick="gotoNext(5, 1, 'version-1-course-x-lesson-5-page-7', false, -1)" disabled>Next</button>-->
 			</div> 
 			
             </div>
         </div>
+    </section> 
+    <!-- learning outcome 2 -->
+    <section id="version-1-course-x-lesson-5-page-11" hidden>
+        <div class="row">
+            <div class="container">
+                <h2>Learning outcome 2: A cell in a periodic table - a new element </h2>
+                <ul class="lesson-list">
+                		<li class="main-point">Question</li>
+                		<ul class="sub-points">
+                			<li>What is the chemical symbol of Carbon?</li>
+                		</ul>
+                		<div>
+                			<img  class = "carbon" src="../images/lesson5/carbon.png" alt="Image" width="105" height="90">
+                		</div>
+                </ul>
+                <br><br><br><br>
+                <br><br>
+                <div id="carbonSymbol" class="form-group">
+					  <input id="identifySymbolC" type="text" class="form-control" required>
+				</div>
+               
+                <br>
+            <div class="d-flex justify-content-between">
+				<!--<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
+				onclick="gotoPrevious(5, 2, 'version-1-course-x-lesson-5-page-11', false, -1)">Previous</button>
+				<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
+				onclick="gotoNext(5, 2, 'version-1-course-x-lesson-5-page-11', false, -1">Next</button>-->
+			</div> 
+            </div>
+        </div>
     </section>
+                
+    <!-- Lesson 5 assement 2 - program 2 -->
+	<section id="version-1-course-x-lesson-5-page-12" hidden>
+        <div class="row">
+            <div class="container">
+                <h3><b>Activity : Extend and Test Model -- Carbon</b></h3>
+                <ul>
+                		<li>Extend model: add the knowledge about symbol for Carbon to the model</li>
+                		<ul>
+                			<li>Remember to write the comment first</li>
+                			<li>Then write the fact about this knowledge. </li>
+                		</ul>
+                	</ul>                
+                	<form action="">
+                    <label for="ques1">Test your model: ask a query about Carbon.</label><br/>
+                    <textarea id="program2" name="program2" rows="4" cols="50" class="knowledge-check-input"></textarea>
+                    <br><br>
+                    <br>
+                    <!--<a class="btn btn-primary pull-left"
+                    onclick="gotoPrevious(5, 2, 'version-1-course-x-lesson-5-page-12', false, -1)"> Previous </a>-->
+                    <div class="text-center">
+                        <a class="btn btn-primary" style="margin-left: -15rem;" onclick="submitAssessment('version-1-course-x-lesson-5-page-12', 'program2')"> program2 </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section id="version-1-course-x-lesson-5-page-15" hidden>
+            <div class="row">
+            <div class="container">
+        	<h2>Learning outcome 3: Continue to expand your model </h2>
+            <ul class="lesson-list">
+            		<li class="main-point">Question</li>
+            		<ul class="sub-points">
+            			<li>What is the chemical symbol of Phosphorus?</li>
+            		</ul>
+            		<div>
+            			<img  class = "carbon" src="../images/lesson5/phosphorous.png" alt="Image" width="105" height="120">
+            		</div>
+            </ul>
+            <br><br><br><br>
+            <br><br>
+            <div id="phosphorousSymbol" class="form-group">
+		  		<input id="identifySymbolP" type="text" class="form-control" required>
+			</div>
+			<div class="d-flex justify-content-between">
+				<!--<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
+				onclick="gotoPrevious(5, 3, 'version-1-course-x-lesson-5-page-15', false, -1)">Previous</button>
+				<button class="btn btn-lg btn-primary" style="background-color:#1b84f5" id="identifyNextBtn"
+				onclick="gotoNext(5, 3, 'version-1-course-x-lesson-5-page-15', false, -1)" disabled>Next</button>-->
+			</div> 
+              </div>
+          </div>
+    </section>
+    <!-- learning outcome 3 assigment 3--->
+
+    <section id="version-1-course-x-lesson-5-page-16" hidden>
+        <div class="row">
+            <div class="container">
+                <form action="">
+                    <h3><b>Activity : Extend and Test Model -- Phosphorus</b></h3>
+                	<ul>
+                		<li>Extend model: add the knowledge about symbol for Phosphorus to the model</li>
+                		<ul>
+                			<li>Remember to write the comment first</li>
+                			<li>Then write the fact about this knowledge. </li>
+                		</ul>
+                	</ul>  
+                    <label for="ques1">Test your model: ask a query about Phosphorus.</label><br/>
+                    <textarea id="program3" name="program3" rows="4" cols="50" class="knowledge-check-input" placeholder="//Type your comment first &#10; //Type the fact about this knowledge"></textarea>
+                    <br><br>
+                    <br>
+                    <!--<a class="btn btn-primary pull-left"
+                    onclick="gotoPrevious(5, 3, 'version-1-course-x-lesson-5-page-16', false, -1)"> Previous </a>-->
+                    <div class="text-center">
+                        <a class="btn btn-primary" style="margin-left: -15rem;" onclick="submitAssessment('version-1-course-x-lesson-5-page-16', 'program3')"> Program3 </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+    </section>
+        <section id="version-1-course-x-lesson-5-page-20" hidden>
+        <div class="row">
+            <div class="container">
+   <h2>Learning outcome 3: A cell in a periodic table </h2>
+            <ul class="lesson-list">
+            		<li class="main-point">Can you ask a question similar to our earlier ones?</li> 
+            		<div id="elementSymbol" class="form-group">
+				  		<input id="elementBox" type="text" class="form-control" required>
+					</div>     
+					    		
+            		<div>
+            			<img  id = "randomImageDisplay" class = "element" src="../images/lesson5/elements/17.png" alt="Image" width="105" height="120">
+            		</div>
+            </ul>
+            
+            <div>
+            	<p>Would you like to try it out for another element 
+            		<a href="#" onclick="changeImageRandomly(); return false;"><b><i>click here</i></b></a>
+            	</p>
+            </div>
+            <br>
+            <div class="d-flex justify-content-between">
+				<!--<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
+				onclick="gotoPrevious(5, 4, 'version-1-course-x-lesson-5-page-20', false, -1)">Previous</button>
+				<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
+				onclick="gotoNext(5, 4, 'version-1-course-x-lesson-5-page-20', false, -1)">Next</button>-->
+			</div> 
+          </div>
+      </div>
+</section>
+<!-- learning outcome 4 assigment 4--->
+
+<section id="version-1-course-x-lesson-5-page-21" class="container" hidden>
+    <div class="row">
+        <div class="col-md-6 content" style="margin-left:20rem">
+            <form action="">
+              <h3><b>Activity : Extend and Test Model as You Like</b></h3>
+                <ul>
+                		<li id="chosenElement">Extend model: add the knowledge about symbol to the model</li>
+                		<ul>
+                			<li>Remember to write the comment first</li>
+                			<li>Then write the fact about this knowledge. </li>
+                		</ul>
+                	</ul>
+                <label for="ques1">Test your model: ask a query about Element.</label><br/>
+                <textarea id="program4" name="program4" rows="4" cols="50" class="knowledge-check-input" placeholder="//Type your comment first &#10; //Type the fact about this knowledge"></textarea>
+                <br><br>
+                <br>
+                <!--<a class="btn btn-primary pull-left"
+                onclick="gotoPrevious(5, 4, 'version-1-course-x-lesson-5-page-21', false, -1)"> Previous </a>-->
+                <div class="text-center">
+                    <a class="btn btn-primary" style="margin-left: -15rem;" onclick="submitAssessment('version-1-course-x-lesson-5-page-21', 'program4')"> Program4</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</section>
+    </div>
+      
+
+    <!-- Online SPARC -->
+    <!-- skipped 4,5 pages -->
+
+    <!-- learning outcome 1 -->
+    
 	
 	<!-- Lesson 5 assement 1 - program 1 -->
 	<!-- <section id="version-1-course-x-lesson-5-page-8" class="container" hidden>
@@ -253,183 +496,16 @@ $(function(){
     <!-- skipped 9,10 pages -->
 
 
-    <!-- learning outcome 2 -->
-    <section id="version-1-course-x-lesson-5-page-11" hidden>
-        <div class="row">
-            <div class="container">
-                <h2>Learning outcome 2: A cell in a periodic table - a new element </h2>
-                <ul class="lesson-list">
-                		<li class="main-point">Question</li>
-                		<ul class="sub-points">
-                			<li>What is the chemical symbol of Carbon?</li>
-                		</ul>
-                		<div>
-                			<img  class = "carbon" src="../images/lesson5/carbon.png" alt="Image" width="105" height="90">
-                		</div>
-                </ul>
-                <br><br><br><br>
-                <br><br>
-                <div id="carbonSymbol" class="form-group">
-					  <input id="identifySymbolC" type="text" class="form-control" required>
-				</div>
-               
-                <br>
-            <div class="d-flex justify-content-between">
-				<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
-				onclick="gotoPrevious(5, 2, 'version-1-course-x-lesson-5-page-11', false, -1)">Previous</button>
-				<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
-				onclick="gotoNext(5, 2, 'version-1-course-x-lesson-5-page-11', false, -1">Next</button>
-			</div> 
-            </div>
-        </div>
-    </section>
-                
-    <!-- Lesson 5 assement 2 - program 2 -->
-	<section id="version-1-course-x-lesson-5-page-12" hidden>
-        <div class="row">
-            <div class="container">
-                <h3><b>Activity : Extend and Test Model -- Carbon</b></h3>
-                <ul>
-                		<li>Extend model: add the knowledge about symbol for Carbon to the model</li>
-                		<ul>
-                			<li>Remember to write the comment first</li>
-                			<li>Then write the fact about this knowledge. </li>
-                		</ul>
-                	</ul>                
-                	<form action="">
-                    <label for="ques1">Test your model: ask a query about Carbon.</label><br/>
-                    <textarea id="program2" name="program2" rows="4" cols="50" class="knowledge-check-input"></textarea>
-                    <br><br>
-                    <br>
-                    <a class="btn btn-primary pull-left"
-                    onclick="gotoPrevious(5, 2, 'version-1-course-x-lesson-5-page-12', false, -1)"> Previous </a>
-                    <div class="text-center">
-                        <a class="btn btn-primary" style="margin-left: -15rem;" onclick="submitAssessment('version-1-course-x-lesson-5-page-12', 'program2')"> Submit </a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
+    
     <!-- onlineSPARC -->
     <!-- skipped 13,14 pages -->
 
 
     <!-- learning outcome 3 -->
-    <section id="version-1-course-x-lesson-5-page-15" hidden>
-            <div class="row">
-            <div class="container">
-        	<h2>Learning outcome 3: Continue to expand your model </h2>
-            <ul class="lesson-list">
-            		<li class="main-point">Question</li>
-            		<ul class="sub-points">
-            			<li>What is the chemical symbol of Phosphorus?</li>
-            		</ul>
-            		<div>
-            			<img  class = "carbon" src="../images/lesson5/phosphorous.png" alt="Image" width="105" height="120">
-            		</div>
-            </ul>
-            <br><br><br><br>
-            <br><br>
-            <div id="phosphorousSymbol" class="form-group">
-		  		<input id="identifySymbolP" type="text" class="form-control" required>
-			</div>
-			<div class="d-flex justify-content-between">
-				<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
-				onclick="gotoPrevious(5, 3, 'version-1-course-x-lesson-5-page-15', false, -1)">Previous</button>
-				<button class="btn btn-lg btn-primary" style="background-color:#1b84f5" id="identifyNextBtn"
-				onclick="gotoNext(5, 3, 'version-1-course-x-lesson-5-page-15', false, -1)" disabled>Next</button>
-			</div> 
-              </div>
-          </div>
-    </section>
-    <!-- learning outcome 3 assigment 3--->
-
-    <section id="version-1-course-x-lesson-5-page-16" hidden>
-        <div class="row">
-            <div class="container">
-                <form action="">
-                    <h3><b>Activity : Extend and Test Model -- Phosphorus</b></h3>
-                	<ul>
-                		<li>Extend model: add the knowledge about symbol for Phosphorus to the model</li>
-                		<ul>
-                			<li>Remember to write the comment first</li>
-                			<li>Then write the fact about this knowledge. </li>
-                		</ul>
-                	</ul>  
-                    <label for="ques1">Test your model: ask a query about Phosphorus.</label><br/>
-                    <textarea id="program3" name="program3" rows="4" cols="50" class="knowledge-check-input" placeholder="//Type your comment first &#10; //Type the fact about this knowledge"></textarea>
-                    <br><br>
-                    <br>
-                    <a class="btn btn-primary pull-left"
-                    onclick="gotoPrevious(5, 3, 'version-1-course-x-lesson-5-page-16', false, -1)"> Previous </a>
-                    <div class="text-center">
-                        <a class="btn btn-primary" style="margin-left: -15rem;" onclick="submitAssessment('version-1-course-x-lesson-5-page-16', 'program3')"> Submit </a>
-                    </div>
-                </form>
-            </div>
-        </div>
     
-    </section>
 <!-- onlineSPARC pages 17,18,19-->
      <!-- learning outcome 4 -->
-    <section id="version-1-course-x-lesson-5-page-20" hidden>
-        <div class="row">
-            <div class="container">
-   <h2>Learning outcome 3: A cell in a periodic table </h2>
-            <ul class="lesson-list">
-            		<li class="main-point">Can you ask a question similar to our earlier ones?</li> 
-            		<div id="elementSymbol" class="form-group">
-				  		<input id="elementBox" type="text" class="form-control" required>
-					</div>     
-					    		
-            		<div>
-            			<img  id = "randomImageDisplay" class = "element" src="../images/lesson5/elements/17.png" alt="Image" width="105" height="120">
-            		</div>
-            </ul>
-            
-            <div>
-            	<p>Would you like to try it out for another element 
-            		<a href="#" onclick="changeImageRandomly(); return false;"><b><i>click here</i></b></a>
-            	</p>
-            </div>
-            <br>
-            <div class="d-flex justify-content-between">
-				<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
-				onclick="gotoPrevious(5, 4, 'version-1-course-x-lesson-5-page-20', false, -1)">Previous</button>
-				<button class="btn btn-lg btn-primary" style="background-color:#1b84f5"
-				onclick="gotoNext(5, 4, 'version-1-course-x-lesson-5-page-20', false, -1)">Next</button>
-			</div> 
-          </div>
-      </div>
-</section>
-<!-- learning outcome 4 assigment 4--->
 
-<section id="version-1-course-x-lesson-5-page-21" class="container" hidden>
-    <div class="row">
-        <div class="col-md-6 content" style="margin-left:20rem">
-            <form action="">
-              <h3><b>Activity : Extend and Test Model as You Like</b></h3>
-                <ul>
-                		<li id="chosenElement">Extend model: add the knowledge about symbol to the model</li>
-                		<ul>
-                			<li>Remember to write the comment first</li>
-                			<li>Then write the fact about this knowledge. </li>
-                		</ul>
-                	</ul>
-                <label for="ques1">Test your model: ask a query about Element.</label><br/>
-                <textarea id="program4" name="program4" rows="4" cols="50" class="knowledge-check-input" placeholder="//Type your comment first &#10; //Type the fact about this knowledge"></textarea>
-                <br><br>
-                <br>
-                <a class="btn btn-primary pull-left"
-                onclick="gotoPrevious(5, 4, 'version-1-course-x-lesson-5-page-21', false, -1)"> Previous </a>
-                <div class="text-center">
-                    <a class="btn btn-primary" style="margin-left: -15rem;" onclick="submitAssessment('version-1-course-x-lesson-5-page-21', 'program4')"> Submit </a>
-                </div>
-            </form>
-        </div>
-    </div>
-
-</section>
 <!-- sparc  22,23,24 pages -->
 <%@ include file = "footer1.jsp" %>
 	<script src="../js/lesson5/validations.js" type="text/javascript">  </script>

@@ -14,6 +14,7 @@
     <link href="../styles/style.css" rel="stylesheet" type="text/css"/>
   </head>
   <body>
+  	<%@ include file = "unAuthRoutes.jsp" %>
     <%@ include file = "headerlog.jsp" %>
     <h2>Online LPK12</h2>
     <div class="row" style="margin-top:10rem">
@@ -29,16 +30,31 @@
 	    <br>
  	    <label for="password">Password</label>
 	    <input type="password" placeholder="Password" id="password" required>
+	     <label for="showPasswordCheckbox">Show Password</label>
+         <input type="checkbox" id="showPasswordCheckbox" onclick="togglePasswordVisibility()">     
+                     
  	    <br>
 	    <br>
             <input type="submit"  value="Login" >  <br>
-            <a href="forgotPassword.jsp">Forgot Password?</a><br>
+            <a href="logicOTP.html">Forgot Password?</a><br>
             <a href="register.jsp">Create New Account</a>  <br>
           </form>
           <br>
 	</div>
       </div>
     </div>
+    <!-- toggle password -->  
+    <script>
+    function togglePasswordVisibility() {
+    	var passwordInput = document.getElementById("password");
+    	var checkbox = document.getElementById("showPasswordCheckbox");
+    	if (checkbox.checked) {
+    	    passwordInput.type = "text";
+    	} else {
+    	    passwordInput.type = "password";
+    	}
+    }	
+</script>
     <%@ include file = "footer.jsp" %>
   </body>
   <script type="text/javascript">
@@ -67,18 +83,28 @@
             	console.log(data)
                 sessionStorage.setItem("username",data.content.username)
                 sessionStorage.setItem("userId",data.content.id)
-		sessionStorage.setItem("token",data.content.accessToken)
+				sessionStorage.setItem("token",data.content.accessToken)
                 console.log(sessionStorage.getItem("userId"))	
                 console.log(data.roles)
               	if(data.content.roles=="Teacher"){
-		  sessionStorage.setItem("userRole","Teacher")
-              	  location.href='hometeacher.jsp'
+		  			sessionStorage.setItem("userRole","Teacher")
+              	  	location.href='hometeacher.jsp'
               	}
               	else if(data.content.roles=='Student'){
               		console.log(data.roles)
+	
 		  sessionStorage.setItem("userRole","Student")
-              	  location.href='home.jsp'
-              	}
+    		if (data.content.enrolledCourses == "OnlineLPK12"){ 
+    			sessionStorage.setItem("enrolledCourses","OnlineLPK12")
+    		location.href='home_student_onlinelpk12.jsp'
+    		} 
+    		else if (data.content.enrolledCourses == 'LPK12'){
+    		sessionStorage.setItem("enrolledCourses","LPK12")
+    		location.href='home_student_logicds.jsp' 
+    		} 
+    		else {
+    		sessionStorage.setItem("enrolledCourses","home.jsp") 
+    		location.href='home.jsp'}
             })
         }
         else{
