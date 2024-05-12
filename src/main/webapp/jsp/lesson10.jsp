@@ -116,7 +116,7 @@
             width: 20%; /* Adjust width as needed */
             padding: 20px;
         } 
-              .lesson-nav {
+  .lesson-nav {
         float: left;
         width: 20%; /* Adjust width as needed */
         padding: 20px;
@@ -154,7 +154,7 @@
       /* Show the first slide initially */
       .lesson-slides section:first-child {
         display: block;
-      }
+      }  
     </style>
 
 </head>
@@ -199,15 +199,15 @@
     </script>
     <%@ include file = "authRoutes.jsp" %>
 	<%@ include file = "header1.jsp" %>
-	<div class="lesson-nav">
+	<div class="slide-buttons">
         <!-- Slide buttons here -->
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-10-page-1">Slide 1</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-10-page-2">Slide 2</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-10-page-3">Slide 3</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-10-page-4">Slide 4</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-10-page-5">Slide 5</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-10-page-6">Slide 6</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-10-page-7">Slide 7</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-10-page-1')">Slide 1</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-10-page-2')">Slide 2</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-10-page-3')">Slide 3</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-10-page-4')">Slide 4</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-10-page-5')">Slide 5</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-10-page-6')">Slide 6</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-10-page-7')">Slide 7</button>
         </div>
         <div class="pages">
         <section id="version-1-course-x-lesson-10-page-1" hidden>
