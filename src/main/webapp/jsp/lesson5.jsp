@@ -75,13 +75,7 @@
             width: 20%; /* Adjust width as needed */
             padding: 20px;
         }
-              .lesson-nav {
-        float: left;
-        width: 20%; /* Adjust width as needed */
-        padding: 20px;
-      }
-
-      .slide-btn {
+              .slide-btn {
         display: block;
         width: 100%;
         margin-bottom: 10px;
@@ -114,6 +108,7 @@
       .lesson-slides section:first-child {
         display: block;
       }
+          
     </style> 
 </head>
 
@@ -149,19 +144,19 @@
     </script>
     <%@ include file = "authRoutes.jsp" %>
 	<%@ include file = "header1.jsp" %>
-	<div class="lesson-nav">
+	<div class="slide-buttons">
         <!-- Slide buttons here -->
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-1">Slide 1</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-2">Slide 2</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-3">Slide 3</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-6">Slide 4</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-7">Slide 5</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-11">Slide 6</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-12">Slide 7</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-15">Slide 8</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-16">Slide 9</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-20">Slide 10</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-5-page-21">Slide 11</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-5-page-1')">Slide 1</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-5-page-2')">Slide 2</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-5-page-3')">Slide 3</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-5-page-6')">Slide 4</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-5-page-7')">Slide 5</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-5-page-11')">Slide 6</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-5-page-12')">Slide 7</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-5-page-15')">Slide 8</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-5-page-16')">Slide 9</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-5-page-20')">Slide 10</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-5-page-21')">Slide 11</button>
 
 
         <!-- Add more slide buttons as needed -->  
