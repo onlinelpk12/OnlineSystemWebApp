@@ -78,7 +78,41 @@
             float: left;
             width: 20%; /* Adjust width as needed */
             padding: 20px;
-        }
+        } 
+        
+        .slide-btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #337ab7; /* Bootstrap primary color */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .slide-btn:hover {
+        background-color: #286090; /* Darker shade of primary color */
+      }
+
+      /* Styles for lesson slides */
+      .lesson-slides {
+        float: left;
+        width: 80%; /* Adjust width as needed */
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .lesson-slides section {
+        display: none;
+      }
+
+      /* Show the first slide initially */
+      .lesson-slides section:first-child {
+        display: block;
+      }
     </style>
 
     <link rel="stylesheet" href="../styles/style.css">
@@ -119,18 +153,18 @@
 	<%@ include file = "header1.jsp" %>
 		<div class="slide-buttons">
         <!-- Slide buttons here -->
-        <button class="btn btn-primary" onclick="gotoPage('version-1-course-x-lesson-4.1-page-1')">Slide 1</button></br></br>
-        <button class="btn btn-primary" onclick="gotoPage('version-1-course-x-lesson-4.1-page-2')">Slide 2</button></br></br>
-        <button class="btn btn-primary" onclick="gotoPage('version-1-course-x-lesson-4.1-page-3')">Slide 3</button></br></br>
-        <button class="btn btn-primary" onclick="gotoPage('version-1-course-x-lesson-4.1-page-4')">Slide 4</button></br></br>
-        <button class="btn btn-primary" onclick="gotoPage('version-1-course-x-lesson-4.1-page-5')">Slide 5</button></br></br>
-        <button class="btn btn-primary" onclick="gotoPage('version-1-course-x-lesson-4.1-page-6')">Slide 6</button></br></br>
-        <button class="btn btn-primary" onclick="gotoPage('version-1-course-x-lesson-4.1-page-7')">Slide 7</button></br></br>
-        <button class="btn btn-primary" onclick="gotoPage('version-1-course-x-lesson-4.1-page-8')">Slide 8</button></br></br>
-        <button class="btn btn-primary" onclick="gotoPage('version-1-course-x-lesson-4.1-page-9')">Slide 9</button></br></br>
-        <button class="btn btn-primary" onclick="gotoPage('version-1-course-x-lesson-4.1-page-10')">Slide 10</button></br></br>
-        <button class="btn btn-primary" onclick="gotoPage('version-1-course-x-lesson-4.1-page-11')">Slide 11</button></br></br>
-        <button class="btn btn-primary" onclick="gotoPage('version-1-course-x-lesson-4.1-page-12')">Slide 12</button></br></br>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-4.1-page-1')">Slide 1</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-4.1-page-2')">Slide 2</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-4.1-page-3')">Slide 3</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-4.1-page-4')">Slide 4</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-4.1-page-5')">Slide 5</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-4.1-page-6')">Slide 6</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-4.1-page-7')">Slide 7</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-4.1-page-8')">Slide 8</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-4.1-page-9')">Slide 9</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-4.1-page-10')">Slide 10</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-4.1-page-11')">Slide 11</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-4.1-page-12')">Slide 12</button>
 
         <!-- Add more slide buttons as needed -->  
     </div>
