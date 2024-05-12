@@ -62,7 +62,7 @@ $(function(){
             width: 20%; /* Adjust width as needed */
             padding: 20px;
         } 
-              .lesson-nav {
+        .lesson-nav {
         float: left;
         width: 20%; /* Adjust width as needed */
         padding: 20px;
@@ -166,22 +166,22 @@ $(function(){
 	<%@ include file = "header1.jsp" %>
 	<div class="lesson-nav">
         <!-- Slide buttons here -->
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-8-page-1">Slide 1</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-8-page-2">Slide 2</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-8-page-3">Slide 3</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-8-page-7">Slide 4</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-8-page-10">Slide 5</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-8-page-11">Slide 6</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-8-page-12">Slide 7</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-8-page-13">Slide 8</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-8-page-14">Slide 9</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-8-page-15">Slide 10</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-8-page-17">Slide 11</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-8-page-18">Slide 12</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-8-page-19">Slide 13</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-8-page-22">Slide 14</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-8-page-23">Slide 15</button>
-        <button class="slide-btn" data-slide-id="version-1-course-x-lesson-8-page-24">Slide 16</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-8-page-1')">Slide 1</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-8-page-2')">Slide 2</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-8-page-3')">Slide 3</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-8-page-7')">Slide 4</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-8-page-10')">Slide 5</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-8-page-11')">Slide 6</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-8-page-12')">Slide 7</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-8-page-13')">Slide 8</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-8-page-14')">Slide 9</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-8-page-15')">Slide 10</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-8-page-17')">Slide 11</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-8-page-18')">Slide 12</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-8-page-19')">Slide 13</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-8-page-22')">Slide 14</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-8-page-23')">Slide 15</button>
+        <button class="slide-btn" onclick="gotoPage('version-1-course-x-lesson-8-page-24')">Slide 16</button>
         </div>
  <div class="pages">
     <section id="version-1-course-x-lesson-8-page-1" hidden>
